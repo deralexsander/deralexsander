@@ -87,16 +87,17 @@ Capacidad comprobada en:
         y manteniendo una carga ultra veloz.
       - Despliegue en entorno de producción utilizando Railway.
 
-[2] GYM Constructora — Sitio Corporativo y Gestión Digital Integral
+[2] G&M Constructora (Godoy & Méndez SpA) — Sitio Corporativo y Gestión Digital Integral
     ----------------------------------------------------------------------------
     • Tipo: Cliente Real / Freelance para PYME del Sector Construcción
+    • Repositorio: https://github.com/deralexsander/GMConstructora
     • Rol: Consultor Web, Diseñador UI/UX & Desarrollador Full-Stack
     • Alcance del Proyecto:
-      Cliente PYME que solicitó una solución completa para establecer su presencia digital
-      corporativa de alto impacto.
+      Constructora Godoy & Méndez SpA, cliente PYME que solicitó una solución completa para
+      establecer su presencia digital corporativa de alto impacto.
     • Responsabilidades y Solución Entregada:
       - Consultoría y levantamiento de requerimientos técnicos y de negocio.
-      - Diseño UX/UI moderno, limpio y enfocado en la conversión y catálogo de obras.
+      - Diseño UX/UI moderno, limpio y enfocado en el catálogo de obras y captación de clientes.
       - Desarrollo del sitio web responsivo y optimizado para dispositivos móviles y escritorio.
       - Compra, configuración técnica y gestión integral del dominio (URL) y zonas DNS.
       - Configuración de hosting, certificados SSL/TLS y cuentas de correo corporativas.
