@@ -226,4 +226,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   loadRecentGitHubActivity();
+
+  // 8. Dynamic Live Projects Counter (GitHub Pages + Live Domains)
+  async function updateLiveProjectsCount() {
+    const counterEl = document.getElementById('liveProjectsCounter');
+    if (!counterEl) return;
+
+    try {
+      const res = await fetch('https://api.github.com/users/deralexsander/repos?per_page=100');
+      if (!res.ok) return;
+      const repos = await res.json();
+      
+      // Count repos with has_pages: true (excluding self-profile deralexsander)
+      const pagesRepos = repos.filter(r => r.has_pages && r.name.toLowerCase() !== 'deralexsander');
+      
+      // External live production domain (SmartBids.cl)
+      const externalLiveCount = 1; 
+      
+      const totalLive = pagesRepos.length + externalLiveCount;
+      if (totalLive > 0) {
+        counterEl.textContent = totalLive;
+      }
+    } catch (e) {
+      console.log('Using default live projects count:', e);
+    }
+  }
+
+  updateLiveProjectsCount();
 });

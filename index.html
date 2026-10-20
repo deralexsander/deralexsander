@@ -30,31 +30,37 @@
   <div class="ambient-glow ambient-glow-2"></div>
   <div class="ambient-glow ambient-glow-3"></div>
 
-  <!-- Barra de navegación flotante estilo Glass Pill -->
+  <!-- Barra de navegación con esquinas redondeadas y botón Contactar al lado -->
   <header class="site-header">
-    <nav class="nav-pill" aria-label="Navegación principal">
-      <a href="#inicio" class="brand">
-        <span class="brand-badge">CS</span>
-        <span>catstudio<span style="color: var(--blue-bright);">.cl</span></span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-        <li><a href="#actividad" class="nav-link">Actividad</a></li>
-        <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
-        <li><a href="#certificaciones" class="nav-link">Certificados</a></li>
-        <li><a href="#habilidades" class="nav-link">Stack</a></li>
-        <li><a href="#contacto" class="nav-link">Contacto</a></li>
-      </ul>
-
-      <div class="nav-cta">
-        <a href="assets/cv-nicolas-munoz.pdf" class="btn btn-secondary btn-sm" download title="Descargar Currículum Vitae en PDF">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          CV (PDF)
+    <div class="header-container">
+      <nav class="site-navbar" aria-label="Navegación principal">
+        <a href="#inicio" class="brand">
+          <span class="brand-badge">CS</span>
+          <span>catstudio<span style="color: var(--blue-bright);">.cl</span></span>
         </a>
-        <a href="#contacto" class="btn btn-primary btn-sm">Contratar</a>
-      </div>
-    </nav>
+
+        <ul class="nav-links">
+          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+          <li><a href="#actividad" class="nav-link">Actividad</a></li>
+          <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+          <li><a href="#certificaciones" class="nav-link">Certificados</a></li>
+          <li><a href="#habilidades" class="nav-link">Stack</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="assets/cv-nicolas-munoz.pdf" class="btn btn-secondary btn-sm" download title="Descargar Currículum Vitae en PDF">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            CV (PDF)
+          </a>
+        </div>
+      </nav>
+
+      <!-- Botón Contactar ubicado al lado de la barra -->
+      <a href="#contacto" class="btn btn-primary btn-nav-contact">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Contactar</span>
+      </a>
+    </div>
   </header>
 
   <main>
@@ -108,10 +114,10 @@
             <div class="metric-detail">Optimización e indexación PostgreSQL en SmartBids</div>
           </div>
 
-          <div class="metric-card reveal">
-            <div class="metric-value">82%</div>
-            <div class="metric-label">F1-Score en ML</div>
-            <div class="metric-detail">Modelo predictivo entrenado con Scikit-Learn y XGBoost</div>
+          <div class="metric-card reveal" title="Proyectos desplegados y accesibles públicamente en internet">
+            <div class="metric-value" id="liveProjectsCounter">3</div>
+            <div class="metric-label">Proyectos Activos en Línea</div>
+            <div class="metric-detail">SmartBids (smartbids.cl), Notes & Sillage y G&M</div>
           </div>
 
           <div class="metric-card reveal">
@@ -203,6 +209,10 @@
               </div>
 
               <div class="project-actions">
+                <a href="https://smartbids.cl" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span>Demo en Vivo (smartbids.cl)</span>
+                </a>
                 <a href="https://github.com/deralexsander/SmartBids" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                   <span>Ver Repositorio</span>
@@ -252,6 +262,10 @@
               </div>
 
               <div class="project-actions">
+                <a href="https://deralexsander.github.io/GMConstructora/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span>Demo en Vivo</span>
+                </a>
                 <a href="https://github.com/deralexsander/GMConstructora" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                   <span>Ver Repositorio</span>

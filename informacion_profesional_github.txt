@@ -70,6 +70,7 @@ Capacidad comprobada en:
     ----------------------------------------------------------------------------
     • Tipo: Proyecto Capstone / SaaS en Producción
     • Periodo: Agosto 2025 – Diciembre 2025
+    • URL en Producción: https://smartbids.cl
     • Repositorio: https://github.com/deralexsander/SmartBids
     • Stack Tecnológico: Python, Django, Django REST Framework, PostgreSQL, HTMX,
       Scikit-Learn, XGBoost, Railway, Docker, HTML5, CSS3.
@@ -90,6 +91,7 @@ Capacidad comprobada en:
 [2] G&M Constructora (Godoy & Méndez SpA) — Sitio Corporativo y Gestión Digital Integral
     ----------------------------------------------------------------------------
     • Tipo: Cliente Real / Freelance para PYME del Sector Construcción
+    • Demo en Vivo (GitHub Pages): https://deralexsander.github.io/GMConstructora/
     • Repositorio: https://github.com/deralexsander/GMConstructora
     • Rol: Consultor Web, Diseñador UI/UX & Desarrollador Full-Stack
     • Alcance del Proyecto:
