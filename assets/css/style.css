@@ -712,13 +712,18 @@ body {
 }
 
 .project-media .project-logo-img {
-  max-width: 150px;
-  max-height: 130px;
+  max-width: 175px;
+  max-height: 140px;
   width: auto;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.65));
   transition: transform 0.4s var(--ease-apple);
+}
+
+.project-media .project-logo-img[src$=".gif"] {
+  max-width: 220px;
+  max-height: 145px;
 }
 
 .project-card:hover .project-media .project-logo-img {
