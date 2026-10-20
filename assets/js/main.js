@@ -160,4 +160,70 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { passive: true });
+
+  // 7. Live GitHub Activity Fetcher
+  async function loadRecentGitHubActivity() {
+    const grid = document.getElementById('recent-activity-grid');
+    if (!grid) return;
+
+    function getRelativeTime(dateString) {
+      const date = new Date(dateString);
+      const now = new Date();
+      const diffSecs = Math.floor((now - date) / 1000);
+      
+      if (diffSecs < 60) return 'Hace unos segundos';
+      const diffMins = Math.floor(diffSecs / 60);
+      if (diffMins < 60) return `Hace ${diffMins} min${diffMins > 1 ? 's' : ''}`;
+      const diffHours = Math.floor(diffMins / 60);
+      if (diffHours < 24) return `Hace ${diffHours} hora${diffHours > 1 ? 's' : ''}`;
+      const diffDays = Math.floor(diffHours / 24);
+      if (diffDays === 1) return 'Ayer';
+      if (diffDays < 30) return `Hace ${diffDays} días`;
+      const diffMonths = Math.floor(diffDays / 30);
+      return `Hace ${diffMonths} mes${diffMonths > 1 ? 'es' : ''}`;
+    }
+
+    try {
+      const res = await fetch('https://api.github.com/users/deralexsander/repos?sort=pushed&per_page=6');
+      if (!res.ok) throw new Error('GitHub API offline or rate-limited');
+      const repos = await res.json();
+      
+      // Filter out self-profile and get latest 4 updated repositories
+      const filtered = repos.filter(r => r.name !== 'deralexsander').slice(0, 4);
+
+      if (filtered.length > 0) {
+        grid.innerHTML = filtered.map(repo => {
+          const lang = repo.language || 'Software';
+          const timeAgo = getRelativeTime(repo.pushed_at);
+          const desc = repo.description || 'Proyecto en desarrollo e integración continua.';
+          return `
+            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="activity-card reveal active">
+              <div class="activity-card-top">
+                <span class="activity-repo-name">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                  ${repo.name}
+                </span>
+                <span class="activity-lang-pill">${lang}</span>
+              </div>
+              <p class="activity-desc">${desc}</p>
+              <div class="activity-card-footer">
+                <span class="activity-time">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  Último push: ${timeAgo}
+                </span>
+                <span class="activity-link-text">
+                  Ver código
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </div>
+            </a>
+          `;
+        }).join('');
+      }
+    } catch (err) {
+      console.log('GitHub live activity using fallback:', err);
+    }
+  }
+
+  loadRecentGitHubActivity();
 });

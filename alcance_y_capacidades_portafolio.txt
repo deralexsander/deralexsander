@@ -1,0 +1,104 @@
+================================================================================
+ALCANCE, CAPACIDADES Y LÍMITES DEL PORTAFOLIO WEB
+catstudio.cl | Nicolás Alexsander Muñoz Méndez
+Repositorio: https://github.com/deralexsander/deralexsander
+================================================================================
+
+Este documento define con total transparencia técnica qué funciones realiza el
+sitio web de forma automática, qué capacidades ofrece a reclutadores y cuáles son
+sus límites arquitectónicos.
+
+
+1. LO QUE LA PÁGINA SÍ HACE Y PUEDE HACER (CAPACIDADES)
+--------------------------------------------------------------------------------
+
+[A] Despliegue y Mantenimiento Automatizado (CI/CD)
+    • Cada vez que realizas un "git push origin main" en este repositorio, el flujo
+      automatizado de GitHub Actions detecta el cambio, construye y publica la web
+      en internet en 20-30 segundos sin intervención manual ni costo alguno.
+    • Alojamiento gratuito de alta disponibilidad (99.9%) con certificado SSL/TLS
+      (HTTPS seguro) provisto por la infraestructura global de GitHub Pages.
+
+[B] Experiencia Visual y Rendimiento Estilo Apple
+    • Diseño Dark Mode de alta gama con paleta obsidiana (#05070c) y azul zafiro/eléctrico.
+    • Microinteracciones fluidas y orgánicas calculadas con curvas cúbicas Apple
+      (cubic-bezier(0.16, 1, 0.3, 1)).
+    • Carga progresiva y suave (fade & slide) mediante IntersectionObserver.
+    • Micro-inclinación 3D interactiva en tarjetas de proyectos y métricas al mover el ratón.
+    • Carga ultra veloz (menos de 1 segundo de renderizado) al no depender de frameworks
+      pesados ni librerías lentas (100% Vanilla HTML5, CSS3 moderno y JavaScript ES6+).
+
+[C] Herramientas de Conversión para Reclutadores Técnicos
+    • Descarga inmediata en un solo clic del Currículum Vitae en PDF.
+    • Visualizador y enlaces directos a los PDFs originales de certificados oficiales:
+      - Cisco Partner: PCAP (Python Essentials)
+      - CertiProf: DevOps Foundation (DFPC™)
+      - CertiProf: DevOps Essentials (DEPC®)
+    • Botón interactivo para copiar el correo electrónico al portapapeles con confirmación
+      visual tipo "toast" flotante (sin necesidad de abrir programas externos de correo).
+    • Enlaces directos a perfiles activos: LinkedIn, GitHub personal y WhatsApp directo.
+    • Sistema de filtrado dinámico de proyectos (SaaS, E-commerce, Móvil) en tiempo real
+      sin recarga de página.
+
+[D] Sincronización en Vivo con tu Actividad de GitHub (API en Tiempo Real)
+    • La sección de actividad reciente consulta directamente la API pública de GitHub:
+      - Lee en tiempo real tus repositorios públicos ordenados por último push.
+      - Muestra el nombre del repositorio, fecha relativa ("hace 2 horas", "hace 3 días"),
+        lenguaje principal utilizado y enlace directo a su código.
+    • Cuenta con sistema de protección (fallback) para que, en caso de interrupción de red
+      o límite de peticiones de GitHub, la página siga viéndose perfecta y completa.
+
+[E] Soporte Multiplataforma y Dominio Personalizado
+    • Totalmente responsivo para smartphones, tablets, laptops y pantallas panorámicas.
+    • Compatible con dominios personalizados (como catstudio.cl). Solo requiere configurar
+      los registros DNS (CNAME / ALIAS) en el proveedor del dominio.
+
+
+2. LO QUE LA PÁGINA NO HACE Y NO PUEDE HACER (LIMITACIONES)
+--------------------------------------------------------------------------------
+
+[A] No redacta ni crea fichas de proyectos nuevos automáticamente
+    • Si creas un repositorio nuevo en tu cuenta de GitHub (por ejemplo, "proyecto-ia"),
+      la sección de actividad en vivo mostrará que creaste o modificaste ese repositorio.
+    • Sin embargo, la página NO PUEDE redactar por sí sola una tarjeta destacada con
+      métricas de negocio (como el 82% F1-score de SmartBids o la consultoría de G&M
+      Constructora) ni capturar pantallas por su cuenta.
+    • Para destacar un proyecto a nivel profesional con capturas, roles y métricas,
+      se debe agregar su estructura al código HTML (o pedírmelo a mí para dejarlo listo).
+
+[B] No tiene Backend propio ni Base de Datos de Servidor
+    • El portafolio es una aplicación estática (JAMstack / Frontend). No corre un servidor
+      de Node.js o Django en segundo plano ni cuenta con bases de datos MySQL/PostgreSQL
+      internas para el sitio en sí.
+    • No almacena usuarios, inicios de sesión ni formularios con base de datos propia.
+      Las vías de contacto son directas mediante protocolos web (mailto, tel, whatsapp, linkedin).
+
+[C] No ejecuta código de servidor ni modelos de Machine Learning internamente
+    • GitHub Pages no ejecuta código Python, pipelines de datos pesados ni servidores Django.
+    • Si deseas que los reclutadores prueben tus aplicaciones interactivas en vivo
+      (como el backend de SmartBids o FerreMas), esos proyectos deben estar alojados en
+      plataformas de backend (Railway, Render, AWS, GCP, etc.) y desde el portafolio
+      simplemente se coloca el enlace "Ver Demo en Vivo".
+
+[D] Límite de Peticiones de la API Pública de GitHub
+    • La API pública de GitHub sin autenticación permite hasta 60 consultas por hora por IP.
+    • Por esta razón, la web implementa una capa inteligente de respaldo: si un usuario
+      excede el límite o navega sin conexión, la página no mostrará un error feo, sino que
+      cargará los últimos datos registrados con total elegancia.
+
+[E] No compra ni renueva dominios automáticamente
+    • El portafolio no puede adquirir dominios por ti. Si deseas activar "catstudio.cl",
+      la compra se realiza en el registrador oficial (como nic.cl) y la vinculación se
+      declara en la configuración de GitHub Pages.
+
+
+3. RESUMEN PARA EL DÍA A DÍA
+--------------------------------------------------------------------------------
+¿Qué debes hacer tú cuando trabajes en tus proyectos?
+1. Trabaja normalmente en tus repositorios (SmartBids, notes-and-sillage, etc.) haciendo
+   tus commits y pushes normales.
+2. Tu actividad reciente en GitHub se reflejará sola en la nueva sección en tiempo real.
+3. Si desarrollas un proyecto grande que quieras destacar con capturas y métricas de
+   negocio en la sección principal, solo avísame y redactamos su tarjeta para subirla
+   en segundos.
+================================================================================

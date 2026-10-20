@@ -721,6 +721,136 @@ body {
 }
 
 /* ==========================================================================
+   RECENT GITHUB ACTIVITY (Live Feed)
+   ========================================================================== */
+.activity-header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.recent-activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.activity-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-blue);
+  border-radius: 18px;
+  padding: 1.4rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.3s var(--ease-apple);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.activity-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-blue-hover);
+  background: var(--bg-card-hover);
+  box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.7), var(--shadow-glow);
+}
+
+.activity-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.activity-repo-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.activity-repo-name svg {
+  color: var(--cyan-accent);
+  flex-shrink: 0;
+}
+
+.activity-lang-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  color: var(--blue-bright);
+}
+
+.activity-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.activity-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.activity-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.activity-time svg {
+  width: 13px;
+  height: 13px;
+  color: var(--cyan-accent);
+}
+
+.activity-link-text {
+  color: var(--blue-bright);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: transform 0.2s ease;
+}
+
+.activity-card:hover .activity-link-text {
+  transform: translateX(3px);
+  color: var(--cyan-accent);
+}
+
+/* ==========================================================================
    EXPERIENCE & TIMELINE SECTION
    ========================================================================== */
 .timeline-container {
