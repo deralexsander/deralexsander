@@ -3,32 +3,51 @@
  * Microinteracciones, filtrado fluido y animaciones estilo Apple
  */
 
-// Sistema de carga Apple-style: Espera la carga completa de componentes y recursos
+// Sistema de carga Apple-style optimizado para carga inmediata y fluida
 (function initPreloader() {
   const preloader = document.getElementById('preloader');
   const bar = document.querySelector('.preloader-bar');
-  if (bar) {
-    requestAnimationFrame(() => {
-      bar.style.width = '70%';
-    });
-  }
+  if (!preloader) return;
 
+  // Animación progresiva suave de inicio
+  let progress = 35;
+  if (bar) bar.style.width = '35%';
+
+  const progressTimer = setInterval(() => {
+    if (progress < 85) {
+      progress += 15;
+      if (bar) bar.style.width = progress + '%';
+    }
+  }, 90);
+
+  let isDismissed = false;
   function dismissPreloader() {
-    if (!preloader) return;
+    if (isDismissed) return;
+    isDismissed = true;
+    clearInterval(progressTimer);
+
     if (bar) bar.style.width = '100%';
+    preloader.style.pointerEvents = 'none';
+
+    // Activar de inmediato elementos visibles sobre el pliegue
+    document.querySelectorAll('.hero-section .reveal, .metric-card').forEach(el => {
+      el.classList.add('active');
+    });
+
     setTimeout(() => {
       preloader.classList.add('fade-out');
       setTimeout(() => {
         if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
-      }, 550);
-    }, 280);
+      }, 450);
+    }, 200);
   }
 
   if (document.readyState === 'complete') {
     dismissPreloader();
   } else {
     window.addEventListener('load', dismissPreloader);
-    setTimeout(dismissPreloader, 4000);
+    // Timeout máximo de resguardo: nunca esperar más de 1.2 segundos para no demorar en celular
+    setTimeout(dismissPreloader, 1200);
   }
 })();
 
@@ -36,6 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Reveal on scroll (Apple-style smooth fade and translate)
   const revealElements = document.querySelectorAll('.reveal');
   
+  // Activa inmediatamente cualquier elemento visible en el viewport
+  const activateVisibleElements = () => {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    revealElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh * 0.95 && rect.bottom > 0) {
+        el.classList.add('active');
+      }
+    });
+  };
+
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -46,17 +76,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, {
     root: null,
-    rootMargin: '0px 0px -60px 0px',
-    threshold: 0.12
+    rootMargin: '0px 0px 80px 0px', // Margen positivo para activar antes de llegar al borde
+    threshold: 0.05 // Umbral bajo para respuesta instantánea en celulares
   });
 
   revealElements.forEach((el, index) => {
     // Add subtle delay to grouped cards for nice cascade effect
     if (el.classList.contains('metric-card') || el.classList.contains('project-card') || el.classList.contains('cert-card')) {
-      el.style.transitionDelay = `${(index % 3) * 0.08}s`;
+      el.style.transitionDelay = `${(index % 3) * 0.06}s`;
     }
     revealObserver.observe(el);
   });
+
+  // Asegurar activación instantánea de contenido visible
+  activateVisibleElements();
+  window.addEventListener('load', activateVisibleElements);
+  setTimeout(activateVisibleElements, 250);
 
   // 2. Project Filtering with Smooth Transitions
   const filterBtns = document.querySelectorAll('.filter-btn');

@@ -1411,6 +1411,9 @@ body {
   .nav-links {
     display: none;
   }
+  .site-navbar .nav-actions {
+    display: none;
+  }
 }
 
 /* Modo Celular y Tablets */
@@ -1432,6 +1435,10 @@ body {
     min-width: 0;
     flex: 1;
   }
+  /* En formato de celular, ocultar botón de CV en la barra superior para dejar solo Contactar */
+  .site-navbar .nav-actions {
+    display: none !important;
+  }
   .brand {
     font-size: 0.92rem;
   }
@@ -1449,6 +1456,11 @@ body {
   .hero-section {
     padding-top: 6.5rem;
     padding-bottom: 3.5rem;
+  }
+  /* Garantizar que el contenido del hero cargue visible de inmediato en celular sin demoras */
+  .hero-section .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
   .projects-grid {
     grid-template-columns: 1fr;
