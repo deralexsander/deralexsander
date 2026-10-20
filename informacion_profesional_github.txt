@@ -1,0 +1,204 @@
+================================================================================
+INFORMACIÓN PROFESIONAL Y PORTAFOLIO DE PROYECTOS GITHUB
+Nicolás Alexsander Muñoz Méndez | Marca / Dominio: catstudio.cl
+================================================================================
+
+1. DATOS DE IDENTIFICACIÓN Y CONTACTO
+--------------------------------------------------------------------------------
+Nombre Completo:       Nicolás Alexsander Muñoz Méndez
+Título Profesional:    Desarrollador Full-Stack Junior | Egresando de Ingeniería en Informática (2026)
+Ubicación:             Valparaíso, Chile
+Correo Electrónico:    nico.alexander.m.m@gmail.com
+Teléfono:              +56 9 6878 7862
+LinkedIn:              https://www.linkedin.com/in/nicolás-muñoz-méndéz-abb791292
+GitHub:                https://github.com/deralexsander
+Marca / Portafolio:    catstudio.cl / https://deralexsander.github.io/deralexsander/
+
+
+2. PERFIL PROFESIONAL Y PROPUESTA DE VALOR
+--------------------------------------------------------------------------------
+Desarrollador Full-Stack con sólida formación en ingeniería de software, ciclo de
+vida completo de desarrollo, arquitectura de APIs RESTful escalables, pasarelas de pago
+e integración de Machine Learning aplicado a soluciones de negocio reales.
+
+Capacidad comprobada en:
+- Creación de plataformas SaaS de alta demanda y optimización de bases de datos relacionales.
+- Liderazgo técnico y consultoría integral para clientes y PYMES (diseño UX/UI, desarrollo web,
+  compra/gestión de dominios y despliegue a producción).
+- Alta atención al detalle estético, rendimiento, accesibilidad y animaciones fluidas estilo Apple.
+- Certificado en Python (Cisco PCAP) y Fundamentos de DevOps (CertiProf DFPC™ y DEPC®).
+- 1.º Lugar Regional en la Competencia de Robótica MakeX (navegación autónoma y algorítmica).
+
+
+3. FORMACIÓN ACADÉMICA
+--------------------------------------------------------------------------------
+• Duoc UC (2023 - 2026)
+  Carrera: Ingeniería en Informática
+  Estado: Cursando último año / Egresando
+
+• Colegio Don Orione
+  Especialidad: Técnico en Electrónica
+
+
+4. CERTIFICACIONES INTERNACIONALES Y DISTINCIONES
+--------------------------------------------------------------------------------
+• Cisco Partner: PCAP – Programming Essentials in Python
+  - Emisor: Cisco Networking Academy & Python Institute
+  - Fecha: Julio 2023
+  - Enfoque: Estructuras de datos avanzadas, POO, manejo de excepciones y algoritmos en Python.
+
+• CertiProf: DevOps Foundation Professional Certificate (DFPC™)
+  - ID de Verificación: TLZZKDZKTHL-XPXRMHPSH-RLKFTJJHSS
+  - Vigencia: Junio 2026 – Junio 2029
+  - Enfoque: Cultura DevOps, automatización, integración y despliegue continuo (CI/CD), gestión ágil.
+
+• CertiProf: DevOps Essentials Professional Certificate (DEPC®)
+  - ID de Verificación: TLZZLLDVDKK-XPWTMQXHS-RLKRJKLLTT
+  - Vigencia: Junio 2026 – Junio 2029
+  - Enfoque: Principios base de entrega continua, monitoreo y confiabilidad de software.
+
+• 1.º Lugar Regional – Competencia de Robótica MakeX
+  - Distinción: Medalla de Oro regional en robótica y programación de navegación autónoma.
+  - Enfoque: Algoritmos de toma de decisiones en tiempo real, integración sensorial y resolución
+    bajo presión de competencia.
+
+
+5. PROYECTOS Y EXPERIENCIA TÉCNICA RECOPILADA (GITHUB + CLIENTES)
+--------------------------------------------------------------------------------
+
+[1] SmartBids — SaaS de Inteligencia Comercial y Licitaciones Públicas
+    ----------------------------------------------------------------------------
+    • Tipo: Proyecto Capstone / SaaS en Producción
+    • Periodo: Agosto 2025 – Diciembre 2025
+    • Repositorio: https://github.com/deralexsander/SmartBids
+    • Stack Tecnológico: Python, Django, Django REST Framework, PostgreSQL, HTMX,
+      Scikit-Learn, XGBoost, Railway, Docker, HTML5, CSS3.
+    • Descripción:
+      Plataforma integral diseñada para MiPyMEs que automatiza la búsqueda,
+      clasificación y análisis predictivo de oportunidades de negocio en el portal de
+      Mercado Público chileno.
+    • Métricas y Logros Técnicos Clave:
+      - Reducción del 75% en el tiempo invertido por empresas en buscar licitaciones afines.
+      - Base de datos en PostgreSQL con más de 60.000 registros indexados y optimizados
+        para consultas de alta concurrencia.
+      - Modelos predictivos entrenados con Scikit-Learn y XGBoost alcanzando un 82% de
+        F1-score en la predicción de adjudicaciones a partir de datos históricos.
+      - Interfaz altamente reactiva mediante HTMX, eliminando la sobrecarga de SPAs pesadas
+        y manteniendo una carga ultra veloz.
+      - Despliegue en entorno de producción utilizando Railway.
+
+[2] GYM Constructora — Sitio Corporativo y Gestión Digital Integral
+    ----------------------------------------------------------------------------
+    • Tipo: Cliente Real / Freelance para PYME del Sector Construcción
+    • Rol: Consultor Web, Diseñador UI/UX & Desarrollador Full-Stack
+    • Alcance del Proyecto:
+      Cliente PYME que solicitó una solución completa para establecer su presencia digital
+      corporativa de alto impacto.
+    • Responsabilidades y Solución Entregada:
+      - Consultoría y levantamiento de requerimientos técnicos y de negocio.
+      - Diseño UX/UI moderno, limpio y enfocado en la conversión y catálogo de obras.
+      - Desarrollo del sitio web responsivo y optimizado para dispositivos móviles y escritorio.
+      - Compra, configuración técnica y gestión integral del dominio (URL) y zonas DNS.
+      - Configuración de hosting, certificados SSL/TLS y cuentas de correo corporativas.
+      - Entrega y capacitación para la actualización de contenidos del cliente.
+
+[3] Notes & Sillage — Catálogo Digital de Perfumes & Comercio Rápido
+    ----------------------------------------------------------------------------
+    • Tipo: Emprendimiento Propio & Catálogo Web en Producción
+    • Repositorio: https://github.com/deralexsander/notes-and-sillage
+    • Demo en Vivo: https://deralexsander.github.io/notes-and-sillage/
+    • Stack Tecnológico: JavaScript ES6+, HTML5 semántico, CSS3 Vanilla avanzado,
+      GitHub Pages, Lucide Icons, WhatsApp Business API.
+    • Descripción:
+      Catálogo digital e interactivo creado para optimizar el canal de ventas del
+      emprendimiento propio de fragancias en Chile, reemplazando listas estáticas de chat
+      por una experiencia fluida tipo e-commerce.
+    • Métricas y Logros Técnicos Clave:
+      - Buscador inteligente en tiempo real por nombre, código de fragancia o aroma.
+      - Mapeo interactivo de familias olfativas (cítrico, maderoso, oriental, etc.).
+      - Constructor de pedidos dinámico que formatea y envía el carrito listo a WhatsApp.
+      - Despliegue automatizado en GitHub Pages con 100% de disponibilidad y cero costo de servidor.
+
+[4] FerreMas — E-commerce y Plataforma de Gestión Logística Omnicanal
+    ----------------------------------------------------------------------------
+    • Tipo: Proyecto Académico Integrador / E-commerce Empresarial
+    • Periodo: Abril 2025 – Junio 2025
+    • Repositorio: https://github.com/deralexsander/web_FerreMas
+    • Stack Tecnológico: Android Studio, Java, Kotlin, Firebase (GCP), Google OAuth 2.0,
+      Google Maps API, Cloud Firestore.
+    • Descripción:
+      Solución integral para distribuidora de materiales y herramientas con sucursales
+      múltiples, unificando venta móvil y gestión interna de inventario.
+    • Métricas y Logros Técnicos Clave:
+      - Flujo de autenticación federada con Google OAuth 2.0 y Firebase Authentication.
+      - Sistema de Control de Acceso Basado en Roles (RBAC) para Clientes, Administradores,
+        Vendedores, Bodegueros y Contadores.
+      - Integración de Google Maps API para cálculo dinámico de despachos y geolocalización
+        de sucursales entre Santiago y regiones (Valparaíso, Biobío, Los Lagos).
+
+[5] Servicio CATTECH — Plataforma de Integración y Pasarela Financiera
+    ----------------------------------------------------------------------------
+    • Tipo: Proyecto Integrador / Arquitectura de Servicios Móvil y Web
+    • Periodo: Agosto 2024 – Noviembre 2024
+    • Repositorio: https://github.com/deralexsander/Servicio-CATTECH
+    • Stack Tecnológico: Ionic Framework, Angular, TypeScript, Capacitor, Cloud Firestore (GCP),
+      Mercado Pago SDK, JavaScript ES6+.
+    • Rol: Líder Técnico / Desarrollador Full-Stack (Equipo de 2 desarrolladores)
+    • Métricas y Logros Técnicos Clave:
+      - Integración completa del SDK de Mercado Pago para cobros seguros con tarjeta.
+      - Creación de motor de validación de transferencias bancarias directas.
+      - Migración de base de datos a Cloud Firestore con reducción del 40% en latencia de consulta
+        y reglas de seguridad NoSQL granulares.
+      - Despliegue híbrido para web y empaquetado móvil con Capacitor.
+
+[6] NekoBeansWeb — Sistema Administrativo y Tienda Online para PYME
+    ----------------------------------------------------------------------------
+    • Tipo: Tienda Online & Gestión Comercial
+    • Periodo: Abril 2023 – Julio 2023
+    • Repositorio: https://github.com/deralexsander/web_nekobeans
+    • Stack Tecnológico: Python, Django 5, PostgreSQL / SQLite, Bootstrap 5, SweetAlert, HTML5/CSS3.
+    • Descripción:
+      Primer sistema comercial web completo desarrollado para una PYME de artesanías
+      (broches y colgantes de chaquira), automatizando cotizaciones y ventas directas.
+    • Métricas y Logros Técnicos Clave:
+      - Circuito comercial digitalizado con roles de usuario (Visitante, Cliente, Vendedor, Administrador).
+      - Integración de catálogo, carrito de compras persistente y módulo de solicitud de diseños personalizados.
+      - Esquema relacional con integridad transaccional para pagos híbridos (efectivo y transferencia).
+
+
+6. TECH STACK GENERAL ORGANIZADO POR ESPECIALIDAD
+--------------------------------------------------------------------------------
+• Lenguajes de Programación:
+  Python, JavaScript (ES6+), TypeScript, Java, Kotlin, SQL, HTML5, CSS3 / SCSS.
+
+• Backend y Arquitectura:
+  Django, Django REST Framework, Node.js, Express, Arquitectura RESTful, Microservicios,
+  HTMX (Server-Driven UI), Autenticación OAuth 2.0, RBAC.
+
+• Frontend y Desarrollo Móvil:
+  Angular, Ionic, Capacitor, Android Studio, Bootstrap 5, TailwindCSS / Vanilla CSS moderno,
+  Diseño Responsivo, Microinteracciones y animaciones CSS/JS.
+
+• Bases de Datos y Almacenamiento:
+  PostgreSQL (consultas complejas, indexación, ACID), SQLite, Cloud Firestore (NoSQL, reglas de seguridad).
+
+• Machine Learning y Datos:
+  Scikit-Learn, XGBoost, Pandas, NumPy, Modelos de clasificación y predicción de probabilidades.
+
+• Cloud, DevOps e Infraestructura:
+  Railway, Firebase, Google Cloud Platform (GCP), Git, GitHub, GitHub Pages, Docker básico,
+  Principios de CI/CD, Monitoreo y logging.
+
+• Metodologías y Herramientas:
+  Scrum, Kanban, Postman, Visual Studio Code, Linux (Ubuntu/Debian), Bash scripting.
+
+
+7. OBJETIVO DEL PORTAFOLIO WEB (catstudio.cl)
+--------------------------------------------------------------------------------
+• Público Objetivo: Reclutadores técnicos, líderes de ingeniería y empresas de tecnología.
+• Enfoque: Presentar la experiencia técnica, proyectos reales con métricas cuantitativas,
+  código fuente, certificaciones verificables y currículum vitae en una sola interfaz
+  minimalista, moderna y de fácil lectura.
+• Filosofía de Diseño: Estilo Apple (dark mode elegante, paleta negro y azul profundo con
+  acentos sutiles, tipografía limpia, transiciones suaves y microanimaciones de alto nivel).
+================================================================================

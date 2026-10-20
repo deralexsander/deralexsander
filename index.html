@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Nicolás Alexsander Muñoz Méndez — Desarrollador Full-Stack | catstudio.cl</title>
+  
+  <!-- SEO & Open Graph -->
+  <meta name="description" content="Portafolio profesional de Nicolás Alexsander Muñoz Méndez (catstudio.cl). Desarrollador Full-Stack enfocado en SaaS, APIs RESTful, pasarelas de pago, Machine Learning y diseño minimalista estilo Apple.">
+  <meta name="keywords" content="Nicolás Muñoz Méndez, Desarrollador Full-Stack, Software Engineer, Python, Django, PostgreSQL, HTMX, Machine Learning, Valparaíso, Chile, catstudio.cl">
+  <meta name="author" content="Nicolás Alexsander Muñoz Méndez">
+  
+  <meta property="og:title" content="Nicolás Muñoz Méndez — Desarrollador Full-Stack">
+  <meta property="og:description" content="Portafolio de ingeniería de software: SmartBids, Notes & Sillage, GYM Constructora, FerreMas y certificaciones internacionales.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deralexsander.github.io/deralexsander/">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Glows (Luces de ambiente estilo Apple) -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="ambient-glow ambient-glow-3"></div>
+
+  <!-- Barra de navegación flotante estilo Glass Pill -->
+  <header class="site-header">
+    <nav class="nav-pill" aria-label="Navegación principal">
+      <a href="#inicio" class="brand">
+        <span class="brand-badge">CS</span>
+        <span>catstudio<span style="color: var(--blue-bright);">.cl</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+        <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+        <li><a href="#certificaciones" class="nav-link">Certificados</a></li>
+        <li><a href="#habilidades" class="nav-link">Stack</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="assets/cv-nicolas-munoz.pdf" class="btn btn-secondary btn-sm" download title="Descargar Currículum Vitae en PDF">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          CV (PDF)
+        </a>
+        <a href="#contacto" class="btn btn-primary btn-sm">Contratar</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         HERO SECTION
+         ===================================================================== -->
+    <section id="inicio" class="hero-section">
+      <div class="container">
+        
+        <div class="hero-meta reveal">
+          <div class="badge-status">
+            <span class="status-dot"></span>
+            Disponible para nuevas oportunidades
+          </div>
+          <div class="hero-location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Valparaíso, Chile
+          </div>
+        </div>
+
+        <h1 class="hero-title reveal">
+          Desarrollo Full-Stack con<br>
+          <span class="hero-gradient-text">visión de ingeniería y diseño.</span>
+        </h1>
+
+        <p class="hero-subtitle reveal">
+          Soy <strong>Nicolás Alexsander Muñoz Méndez</strong>, egresando de Ingeniería en Informática (Duoc UC). 
+          Diseño y construyo sistemas SaaS, APIs RESTful de alto rendimiento, arquitecturas de pago y modelos predictivos de Machine Learning, cuidando cada detalle estético y de rendimiento.
+        </p>
+
+        <div class="hero-actions reveal">
+          <a href="#proyectos" class="btn btn-primary">
+            <span>Ver Trabajo Seleccionado</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+          <a href="assets/cv-nicolas-munoz.pdf" class="btn btn-secondary" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Descargar CV Completo</span>
+          </a>
+          <a href="https://github.com/deralexsander" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" title="GitHub">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <span>GitHub</span>
+          </a>
+        </div>
+
+        <!-- Métricas cuantitativas para reclutadores -->
+        <div class="metrics-grid">
+          <div class="metric-card reveal">
+            <div class="metric-value">+60.000</div>
+            <div class="metric-label">Registros Procesados</div>
+            <div class="metric-detail">Optimización e indexación PostgreSQL en SmartBids</div>
+          </div>
+
+          <div class="metric-card reveal">
+            <div class="metric-value">82%</div>
+            <div class="metric-label">F1-Score en ML</div>
+            <div class="metric-detail">Modelo predictivo entrenado con Scikit-Learn y XGBoost</div>
+          </div>
+
+          <div class="metric-card reveal">
+            <div class="metric-value">1.º Lugar</div>
+            <div class="metric-label">Regional Robótica MakeX</div>
+            <div class="metric-detail">Algoritmos autónomos y resolución bajo presión</div>
+          </div>
+
+          <div class="metric-card reveal">
+            <div class="metric-value">3</div>
+            <div class="metric-label">Certificaciones Oficiales</div>
+            <div class="metric-detail">Cisco Partner PCAP (Python) y CertiProf DevOps</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PROJECTS SECTION (SHOWCASE PARA RECLUTADORES)
+         ===================================================================== -->
+    <section id="proyectos" class="section">
+      <div class="container">
+        
+        <div class="section-header reveal">
+          <span class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            Portafolio Seleccionado
+          </span>
+          <h2 class="section-title">Soluciones Reales, Arquitectura Sólida</h2>
+          <p class="section-desc">
+            Proyectos construidos con enfoque en ciclo completo de desarrollo: desde el diseño UI/UX y modelado de datos hasta el despliegue en producción.
+          </p>
+        </div>
+
+        <!-- Filtros de categoría interactivos -->
+        <div class="project-filters reveal">
+          <button class="filter-btn active" data-filter="all">Todos los Trabajos (6)</button>
+          <button class="filter-btn" data-filter="saas">SaaS & Full-Stack</button>
+          <button class="filter-btn" data-filter="ecommerce">E-commerce & Clientes</button>
+          <button class="filter-btn" data-filter="mobile">Móvil & Arquitectura</button>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- 1. SmartBids (PROYECTO DESTACADO) -->
+          <article class="project-card featured reveal" data-category="saas all">
+            <div class="project-media">
+              <span class="project-badge-top">Capstone SaaS • En Producción</span>
+              <img src="assets/img/smartbids-logo.png" alt="SmartBids Isotipo" style="max-width: 140px; max-height: 140px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));">
+            </div>
+            <div class="project-content">
+              <div class="project-title-row">
+                <h3 class="project-title">SmartBids</h3>
+                <span class="project-role">Ingeniero de Software / Full-Stack</span>
+              </div>
+              <p class="project-desc">
+                Plataforma SaaS de inteligencia comercial diseñada para MiPyMEs en Chile. Automatiza la detección, análisis y estimación de adjudicación en licitaciones del portal Mercado Público mediante analítica predictiva.
+              </p>
+              
+              <ul class="project-metrics-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Reducción del 75%</strong> en tiempo de rastreo y filtrado continuo de licitaciones públicas.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Base de datos en <strong>PostgreSQL con +60.000 registros indexados</strong> para consultas concurrentes.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Modelos de clasificación (Scikit-Learn y XGBoost) con <strong>82% de F1-score</strong> predictivo.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Frontend reactivo y ultra liviano con <strong>HTMX</strong>, desplegado en producción en Railway.</span>
+                </li>
+              </ul>
+
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Django DRF</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">HTMX</span>
+                <span class="tag">Scikit-Learn</span>
+                <span class="tag">XGBoost</span>
+                <span class="tag">Railway</span>
+                <span class="tag">Docker</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/deralexsander/SmartBids" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>Ver Repositorio</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. GYM Constructora (CLIENTE REAL PYME) -->
+          <article class="project-card reveal" data-category="ecommerce all">
+            <div class="project-media">
+              <span class="project-badge-top">Cliente Real • PYME</span>
+              <div class="project-media-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9h1M9 13h1M9 17h1"/></svg>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title-row">
+                <h3 class="project-title">GYM Constructora</h3>
+                <span class="project-role">Consultor Web & Full-Stack</span>
+              </div>
+              <p class="project-desc">
+                Servicio integral de consultoría y desarrollo para una PYME constructora: desde la concepción del diseño UI/UX hasta la puesta en marcha técnica y corporativa en internet.
+              </p>
+
+              <ul class="project-metrics-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Diseño y desarrollo web</strong> minimalista orientado a captación de clientes de obras y licitaciones.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Gestión de infraestructura:</strong> Compra de dominio (URL), configuración DNS y hosting seguro.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Entrega llave en mano con correo corporativo y diseño responsive para móviles.</span>
+                </li>
+              </ul>
+
+              <div class="project-tags">
+                <span class="tag">Cliente PYME</span>
+                <span class="tag">Diseño UI/UX</span>
+                <span class="tag">Gestión DNS/URL</span>
+                <span class="tag">HTML5/CSS3</span>
+                <span class="tag">Hosting</span>
+              </div>
+
+              <div class="project-actions">
+                <span class="badge-status" style="font-size: 0.75rem;">Proyecto Entregado a Producción</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Notes & Sillage (PROYECTO PROPIO EN PRODUCCIÓN) -->
+          <article class="project-card reveal" data-category="ecommerce all">
+            <div class="project-media">
+              <span class="project-badge-top">Emprendimiento Propio • En Vivo</span>
+              <img src="assets/img/notes-and-sillage.png" alt="Notes and Sillage">
+            </div>
+            <div class="project-content">
+              <div class="project-title-row">
+                <h3 class="project-title">Notes & Sillage</h3>
+                <span class="project-role">Fundador & Desarrollador Web</span>
+              </div>
+              <p class="project-desc">
+                Catálogo digital interactivo para venta de fragancias en Chile. Resuelve la fricción en ventas por chat permitiendo explorar aromas, familias olfativas y generar pedidos directos a WhatsApp.
+              </p>
+
+              <ul class="project-metrics-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Buscador reactivo instantáneo por nombre, código y familia olfativa.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Constructor de pedidos dinámico que automatiza el checkout a la API de WhatsApp.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Despliegue automatizado y costo cero de mantenimiento en <strong>GitHub Pages</strong>.</span>
+                </li>
+              </ul>
+
+              <div class="project-tags">
+                <span class="tag">JavaScript ES6+</span>
+                <span class="tag">GitHub Pages</span>
+                <span class="tag">CSS3 Avanzado</span>
+                <span class="tag">WhatsApp API</span>
+                <span class="tag">UX Móvil</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://deralexsander.github.io/notes-and-sillage/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span>Demo en Vivo</span>
+                </a>
+                <a href="https://github.com/deralexsander/notes-and-sillage" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <span>Código</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. FerreMas (PROYECTO INTEGRAL) -->
+          <article class="project-card reveal" data-category="mobile ecommerce all">
+            <div class="project-media">
+              <span class="project-badge-top">E-commerce Omnicanal</span>
+              <img src="assets/img/ferremas-preview.png" alt="FerreMas Preview">
+            </div>
+            <div class="project-content">
+              <div class="project-title-row">
+                <h3 class="project-title">FerreMas</h3>
+                <span class="project-role">Desarrollador Full-Stack</span>
+              </div>
+              <p class="project-desc">
+                Solución integral de comercio electrónico y control operativo para cadena distribuidora de materiales, unificando venta móvil con gestión de inventario y sucursales estratégicas.
+              </p>
+
+              <ul class="project-metrics-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Control de Acceso Basado en Roles (RBAC): Administrador, Vendedor, Bodeguero y Contador.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Autenticación federada segura con <strong>Google OAuth 2.0 y Firebase Auth</strong>.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Integración de <strong>Google Maps API</strong> para geolocalización y cálculo logístico entre regiones.</span>
+                </li>
+              </ul>
+
+              <div class="project-tags">
+                <span class="tag">Android Studio</span>
+                <span class="tag">Java / Kotlin</span>
+                <span class="tag">Firebase GCP</span>
+                <span class="tag">Google Maps API</span>
+                <span class="tag">RBAC</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/deralexsander/web_FerreMas" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>Ver Repositorio</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Servicio CATTECH (PASARELA FINANCIERA) -->
+          <article class="project-card reveal" data-category="mobile saas all">
+            <div class="project-media">
+              <span class="project-badge-top">Pasarela de Pagos & Cloud</span>
+              <div class="project-media-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title-row">
+                <h3 class="project-title">Servicio CATTECH</h3>
+                <span class="project-role">Líder Técnico / Full-Stack</span>
+              </div>
+              <p class="project-desc">
+                Plataforma de servicios técnicos y pasarela de cobros híbrida móvil y web. Integración de transacciones en tiempo real con tarjeta y motor de verificación de transferencias bancarias.
+              </p>
+
+              <ul class="project-metrics-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Integración de pagos con el <strong>SDK de Mercado Pago</strong> y validación bancaria.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Migración a <strong>Cloud Firestore</strong>, reduciendo la latencia de lectura en un <strong>40%</strong>.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Liderazgo técnico de equipo (2 desarrolladores) bajo metodologías ágiles Scrum.</span>
+                </li>
+              </ul>
+
+              <div class="project-tags">
+                <span class="tag">Ionic</span>
+                <span class="tag">Angular</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Mercado Pago</span>
+                <span class="tag">Cloud Firestore</span>
+                <span class="tag">Capacitor</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/deralexsander/Servicio-CATTECH" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>Ver Repositorio</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. NekoBeans (SISTEMA COMERCIAL PYME) -->
+          <article class="project-card reveal" data-category="ecommerce saas all">
+            <div class="project-media">
+              <span class="project-badge-top">E-commerce PYME • Gestión</span>
+              <div class="project-media-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title-row">
+                <h3 class="project-title">NekoBeansWeb</h3>
+                <span class="project-role">Desarrollador Full-Stack</span>
+              </div>
+              <p class="project-desc">
+                Sistema administrativo y tienda online creado para una PYME de manualidades en chaquira. Digitalizó el ciclo de cotización y ventas directas con segregación de roles y control transaccional.
+              </p>
+
+              <ul class="project-metrics-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Segregación de roles completa (Visitante, Cliente, Vendedor, Administrador).</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Esquema relacional en PostgreSQL con transacciones ACID para pagos híbridos.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Módulo de cotizaciones personalizadas y persistencia de carritos.</span>
+                </li>
+              </ul>
+
+              <div class="project-tags">
+                <span class="tag">Django 5</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Bootstrap 5</span>
+                <span class="tag">SweetAlert</span>
+                <span class="tag">HTML5/CSS3</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/deralexsander/web_nekobeans" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>Ver Repositorio</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         EXPERIENCE & TIMELINE SECTION
+         ===================================================================== -->
+    <section id="experiencia" class="section">
+      <div class="container">
+        
+        <div class="section-header reveal">
+          <span class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Trayectoria Profesional
+          </span>
+          <h2 class="section-title">Experiencia Técnica & Clientes</h2>
+          <p class="section-desc">
+            Construcción de software orientado a resolver problemas operacionales reales de negocio.
+          </p>
+        </div>
+
+        <div class="timeline-container">
+
+          <!-- 1. SmartBids Capstone -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Ingeniero de Software / Full-Stack</h3>
+                  <span class="timeline-company">SmartBids (Proyecto Capstone)</span>
+                </div>
+                <span class="timeline-date">Ago 2025 — Dic 2025</span>
+              </div>
+              <p class="timeline-body">
+                Lideré el diseño e implementación de una plataforma SaaS para análisis continuo de licitaciones públicas del Estado.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Diseñé una API RESTful escalable y consultas concurrentes sobre más de 60.000 registros indexados en PostgreSQL.</li>
+                <li>Entrené algoritmos predictivos en Scikit-Learn y XGBoost alcanzando un 82% de precisión en predicción de adjudicaciones.</li>
+                <li>Implementé una experiencia de usuario rápida y reactiva con HTMX y desplegué la infraestructura en Railway.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 2. GYM Constructora Freelance -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Consultor Web Freelance & Diseñador Full-Stack</h3>
+                  <span class="timeline-company">GYM Constructora (Cliente PYME)</span>
+                </div>
+                <span class="timeline-date">2025</span>
+              </div>
+              <p class="timeline-body">
+                Asesoría técnica integral y desarrollo de presencia digital corporativa para una empresa PYME del sector construcción.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Levantamiento de requerimientos y diseño de interfaz limpia y minimalista orientada a mostrar proyectos y cerrar contratos.</li>
+                <li>Gestión integral del dominio web (compra de URL, configuración DNS y correo corporativo).</li>
+                <li>Despliegue y optimización técnica para alta velocidad de carga y visualización responsiva en dispositivos móviles.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3. Servicio CATTECH -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Líder Técnico & Desarrollador Full-Stack</h3>
+                  <span class="timeline-company">Servicio CATTECH</span>
+                </div>
+                <span class="timeline-date">Ago 2024 — Nov 2024</span>
+              </div>
+              <p class="timeline-body">
+                Coordinación de arquitectura técnica y pasarelas de pago para servicios técnicos.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Integración del SDK de Mercado Pago para procesar transacciones bancarias y tarjetas en línea de forma segura.</li>
+                <li>Migración de arquitectura de datos a Cloud Firestore NoSQL, reduciendo tiempos de respuesta en un 40%.</li>
+                <li>Gestión ágil del equipo de desarrollo asegurando entregas a tiempo y cumplimiento de estándares de seguridad.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 4. NekoBeans & Primeros Proyectos -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Desarrollador Full-Stack</h3>
+                  <span class="timeline-company">NekoBeans & Notes and Sillage</span>
+                </div>
+                <span class="timeline-date">2023 — Presente</span>
+              </div>
+              <p class="timeline-body">
+                Desarrollo continuo de plataformas comerciales para emprendimientos, digitalización de ventas y catálogos en vivo.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Construcción de catálogo digital interactivo en GitHub Pages para Notes & Sillage con checkout automatizado hacia WhatsApp.</li>
+                <li>Modelado transaccional relacional con Django y PostgreSQL para ventas y cotizaciones de PYME.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CERTIFICATIONS & DISTINCTIONS SECTION
+         ===================================================================== -->
+    <section id="certificaciones" class="section">
+      <div class="container">
+        
+        <div class="section-header reveal">
+          <span class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l9-9l-9-9l2 5l-7 4z"/></svg>
+            Credenciales Verificables
+          </span>
+          <h2 class="section-title">Certificaciones Internacionales & Distinciones</h2>
+          <p class="section-desc">
+            Respaldos oficiales en programación Python, cultura DevOps y resolución algorítmica.
+          </p>
+        </div>
+
+        <div class="certs-grid">
+
+          <!-- 1. Cisco Python -->
+          <div class="cert-card reveal">
+            <div class="cert-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4 7.55 4.24a1.78 1.78 0 0 0-2.5 1.55v12.42a1.78 1.78 0 0 0 2.5 1.55L16.5 14.6a1.78 1.78 0 0 0 0-3.2z"/></svg>
+            </div>
+            <h3 class="cert-title">Partner: PCAP – Programming Essentials in Python</h3>
+            <div class="cert-issuer">Cisco Networking Academy & Python Institute</div>
+            <div class="cert-id">Completado: 24 Jul 2023</div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Estructuras de datos complejas, POO avanzada, manejo de excepciones y programación algorítmica en Python.
+            </p>
+            <div class="cert-actions">
+              <a href="assets/certificates/python-essentials-pcap.pdf" target="_blank" class="btn btn-secondary btn-sm" style="width: 100%;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Ver Certificado (PDF)
+              </a>
+            </div>
+          </div>
+
+          <!-- 2. DevOps Foundation -->
+          <div class="cert-card reveal">
+            <div class="cert-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+            </div>
+            <h3 class="cert-title">DevOps Foundation Professional Certificate (DFPC™)</h3>
+            <div class="cert-issuer">CertiProf International</div>
+            <div class="cert-id">ID: TLZZKDZKTHL-XPXRMHPSH-RLKFTJJHSS</div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Fundamentos de integración y despliegue continuo (CI/CD), automatización, fiabilidad y agilidad organizacional.
+            </p>
+            <div class="cert-actions">
+              <a href="assets/certificates/devops-foundation-dfpc.pdf" target="_blank" class="btn btn-secondary btn-sm" style="width: 100%;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Ver Certificado (PDF)
+              </a>
+            </div>
+          </div>
+
+          <!-- 3. DevOps Essentials -->
+          <div class="cert-card reveal">
+            <div class="cert-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3 class="cert-title">DevOps Essentials Professional Certificate (DEPC®)</h3>
+            <div class="cert-issuer">CertiProf International</div>
+            <div class="cert-id">ID: TLZZLLDVDKK-XPWTMQXHS-RLKRJKLLTT</div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Principios de entrega rápida de software, colaboración multidisciplinaria y monitoreo de producción.
+            </p>
+            <div class="cert-actions">
+              <a href="assets/certificates/devops-essentials-depc.pdf" target="_blank" class="btn btn-secondary btn-sm" style="width: 100%;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Ver Certificado (PDF)
+              </a>
+            </div>
+          </div>
+
+          <!-- 4. MakeX Robotics -->
+          <div class="cert-card reveal">
+            <div class="cert-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            <h3 class="cert-title">1.° Lugar Regional — Robótica MakeX</h3>
+            <div class="cert-issuer">Competencia de Robótica Avanzada</div>
+            <div class="cert-id">Medalla de Oro Regional</div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Diseño y programación de algoritmos de navegación autónoma, procesamiento de sensores y toma de decisiones en tiempo real.
+            </p>
+            <div class="cert-actions">
+              <span class="badge-status" style="width: 100%; justify-content: center; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3); color: #fbbf24;">
+                Distinción de Honor
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TECH STACK SECTION
+         ===================================================================== -->
+    <section id="habilidades" class="section">
+      <div class="container">
+        
+        <div class="section-header reveal">
+          <span class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Herramientas & Dominio
+          </span>
+          <h2 class="section-title">Tecnologías y Stack Técnico</h2>
+          <p class="section-desc">
+            Stack moderno seleccionado por rendimiento, escalabilidad y mantenibilidad en producción.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              </div>
+              <h3 class="skill-cat-title">Backend & APIs</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">Django</span>
+              <span class="skill-pill">Django REST</span>
+              <span class="skill-pill">Node.js</span>
+              <span class="skill-pill">APIs RESTful</span>
+              <span class="skill-pill">HTMX</span>
+              <span class="skill-pill">Microservicios</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <h3 class="skill-cat-title">Frontend & Móvil</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">JavaScript ES6+</span>
+              <span class="skill-pill">TypeScript</span>
+              <span class="skill-pill">Android Studio</span>
+              <span class="skill-pill">Kotlin / Java</span>
+              <span class="skill-pill">Angular</span>
+              <span class="skill-pill">Ionic / Capacitor</span>
+              <span class="skill-pill">HTML5 / CSS3</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              </div>
+              <h3 class="skill-cat-title">Datos & Cloud</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">PostgreSQL</span>
+              <span class="skill-pill">Cloud Firestore</span>
+              <span class="skill-pill">Firebase (GCP)</span>
+              <span class="skill-pill">Railway</span>
+              <span class="skill-pill">SQLite</span>
+              <span class="skill-pill">Modelado NoSQL</span>
+              <span class="skill-pill">Transacciones ACID</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+              </div>
+              <h3 class="skill-cat-title">Machine Learning</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Scikit-Learn</span>
+              <span class="skill-pill">XGBoost</span>
+              <span class="skill-pill">Pandas</span>
+              <span class="skill-pill">NumPy</span>
+              <span class="skill-pill">Modelos Predictivos</span>
+              <span class="skill-pill">F1-Score / Accuracy</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3 class="skill-cat-title">DevOps & Seguridad</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Git / GitHub</span>
+              <span class="skill-pill">CI/CD Básico</span>
+              <span class="skill-pill">Docker Básico</span>
+              <span class="skill-pill">Google OAuth 2.0</span>
+              <span class="skill-pill">RBAC</span>
+              <span class="skill-pill">Linux / Bash</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <h3 class="skill-cat-title">Metodologías</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Scrum & Kanban</span>
+              <span class="skill-pill">Liderazgo Técnico</span>
+              <span class="skill-pill">Levantamiento PYMES</span>
+              <span class="skill-pill">Clean Architecture</span>
+              <span class="skill-pill">Postman API Testing</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CONTACT & RECRUITER ACTION HUB
+         ===================================================================== -->
+    <section id="contacto" class="contact-section">
+      <div class="container">
+        
+        <div class="contact-card reveal">
+          <span class="section-tag" style="margin-bottom: 1rem;">
+            <span class="status-dot"></span>
+            Contacto Directo
+          </span>
+          <h2 class="contact-title">¿Interesado en mi perfil técnico?</h2>
+          <p class="contact-subtitle">
+            Estoy disponible para incorporarme a equipos de ingeniería de software, desarrollo Full-Stack y proyectos de alto impacto tecnológico.
+          </p>
+
+          <div class="contact-actions">
+            <a href="mailto:nico.alexander.m.m@gmail.com" class="btn btn-primary" data-action="copy-email">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copiar Correo (nico.alexander.m.m@gmail.com)</span>
+            </a>
+            
+            <a href="assets/cv-nicolas-munoz.pdf" class="btn btn-secondary" download>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Descargar CV (PDF)</span>
+            </a>
+          </div>
+
+          <div class="contact-info-pills">
+            <a href="https://www.linkedin.com/in/nicol%C3%A1s-mu%C3%B1oz-mend%C3%A9z-abb791292" target="_blank" rel="noopener noreferrer" class="info-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <a href="https://github.com/deralexsander" target="_blank" rel="noopener noreferrer" class="info-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <span>GitHub (@deralexsander)</span>
+            </a>
+
+            <a href="https://wa.me/56968787862" target="_blank" rel="noopener noreferrer" class="info-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+56 9 6878 7862</span>
+            </a>
+
+            <span class="info-item" style="color: var(--text-muted);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Valparaíso, Chile</span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-brand">catstudio.cl</div>
+      <p>
+        Diseñado y desarrollado con precisión técnica por <strong>Nicolás Alexsander Muñoz Méndez</strong>.
+      </p>
+      <p style="margin-top: 0.35rem; font-size: 0.78rem;">
+        © <span id="currentYear">2026</span> • Desplegado en GitHub Pages • Código abierto y minimalista.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Toast de Notificación (Feedback de copia de correo) -->
+  <aside id="toast" class="toast" role="status" aria-live="polite">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--cyan-accent);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span class="toast-msg">¡Correo copiado al portapapeles!</span>
+  </aside>
+
+  <!-- Script Principal -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
