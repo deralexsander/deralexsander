@@ -138,17 +138,113 @@ body {
 }
 
 /* ==========================================================================
+   PRELOADER (Apple-style Full Page Loading Screen)
+   ========================================================================== */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background-color: #05070c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s var(--ease-apple), visibility 0.5s var(--ease-apple);
+}
+
+.preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.preloader-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.preloader-monogram {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--blue-electric), var(--blue-deep));
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.45);
+  animation: pulse-preloader 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse-preloader {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+  50% { transform: scale(1.06); box-shadow: 0 0 35px rgba(59, 130, 246, 0.7); }
+}
+
+.preloader-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.preloader-title span {
+  color: var(--blue-bright);
+}
+
+.preloader-track {
+  width: 160px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  background: linear-gradient(90deg, var(--blue-bright), var(--cyan-accent));
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.preloader-status {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ==========================================================================
    NAVIGATION (Glass Rounded Bar & Adjacent Contact Button)
    ========================================================================== */
 .site-header {
   position: fixed;
-  top: 1.25rem;
+  top: 1rem;
   left: 0;
   right: 0;
   z-index: 100;
   display: flex;
   justify-content: center;
-  padding: 0 1rem;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .header-container {
@@ -158,6 +254,7 @@ body {
   gap: 0.75rem;
   max-width: 1060px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .site-navbar {
@@ -614,7 +711,21 @@ body {
   transition: transform 0.5s var(--ease-apple);
 }
 
-.project-card:hover .project-media img {
+.project-media .project-logo-img {
+  max-width: 150px;
+  max-height: 130px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.65));
+  transition: transform 0.4s var(--ease-apple);
+}
+
+.project-card:hover .project-media .project-logo-img {
+  transform: scale(1.08);
+}
+
+.project-card:hover .project-media img:not(.project-logo-img) {
   transform: scale(1.04);
 }
 
@@ -1302,22 +1413,38 @@ body {
   }
 }
 
+/* Modo Celular y Tablets */
 @media (max-width: 768px) {
   .site-header {
     top: 0.75rem;
-    padding: 0 0.75rem;
+    padding: 0 16px; /* Espacio lateral para que no toque los bordes de la pantalla */
+    width: 100%;
+    box-sizing: border-box;
   }
   .header-container {
-    gap: 0.5rem;
+    width: 100%;
+    gap: 8px;
+    justify-content: space-between;
   }
   .site-navbar {
     padding: 0.45rem 0.85rem;
     border-radius: 12px;
+    min-width: 0;
+    flex: 1;
+  }
+  .brand {
+    font-size: 0.92rem;
+  }
+  .brand-badge {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
   }
   .btn-nav-contact {
     border-radius: 12px;
     padding: 0.45rem 0.95rem;
     font-size: 0.82rem;
+    flex-shrink: 0;
   }
   .hero-section {
     padding-top: 6.5rem;
@@ -1332,9 +1459,36 @@ body {
   .contact-card {
     padding: 2.5rem 1.25rem;
   }
+  
+  /* Botón de copiar correo más chico y ergonómico en celular */
+  .btn-copy-email {
+    font-size: 0.82rem;
+    padding: 0.5rem 1.1rem;
+    width: 100%;
+    max-width: 290px;
+    justify-content: center;
+  }
+  .btn-copy-email .email-full {
+    display: none;
+  }
+  .btn-copy-email .email-short {
+    display: inline;
+  }
+}
+
+@media (min-width: 769px) {
+  .btn-copy-email .email-short {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
+  .site-header {
+    padding: 0 12px;
+  }
+  .header-container {
+    gap: 6px;
+  }
   .metrics-grid {
     grid-template-columns: 1fr;
   }

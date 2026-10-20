@@ -3,6 +3,35 @@
  * Microinteracciones, filtrado fluido y animaciones estilo Apple
  */
 
+// Sistema de carga Apple-style: Espera la carga completa de componentes y recursos
+(function initPreloader() {
+  const preloader = document.getElementById('preloader');
+  const bar = document.querySelector('.preloader-bar');
+  if (bar) {
+    requestAnimationFrame(() => {
+      bar.style.width = '70%';
+    });
+  }
+
+  function dismissPreloader() {
+    if (!preloader) return;
+    if (bar) bar.style.width = '100%';
+    setTimeout(() => {
+      preloader.classList.add('fade-out');
+      setTimeout(() => {
+        if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+      }, 550);
+    }, 280);
+  }
+
+  if (document.readyState === 'complete') {
+    dismissPreloader();
+  } else {
+    window.addEventListener('load', dismissPreloader);
+    setTimeout(dismissPreloader, 4000);
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Reveal on scroll (Apple-style smooth fade and translate)
   const revealElements = document.querySelectorAll('.reveal');

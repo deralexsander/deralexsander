@@ -25,6 +25,18 @@
 </head>
 <body>
 
+  <!-- Preloader Apple-style -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-brand">
+        <div class="preloader-monogram">CS</div>
+        <span class="preloader-title">catstudio<span>.cl</span></span>
+      </div>
+      <div class="preloader-track"><div class="preloader-bar"></div></div>
+      <span class="preloader-status">Cargando experiencia...</span>
+    </div>
+  </div>
+
   <!-- Ambient Glows (Luces de ambiente estilo Apple) -->
   <div class="ambient-glow ambient-glow-1"></div>
   <div class="ambient-glow ambient-glow-2"></div>
@@ -167,7 +179,7 @@
           <article class="project-card featured reveal" data-category="saas all">
             <div class="project-media">
               <span class="project-badge-top">Capstone SaaS • En Producción</span>
-              <img src="assets/img/smartbids-logo.png" alt="SmartBids Isotipo" style="max-width: 140px; max-height: 140px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));">
+              <img src="assets/img/smartbids-logo.png" alt="SmartBids Isotipo" class="project-logo-img">
             </div>
             <div class="project-content">
               <div class="project-title-row">
@@ -225,9 +237,7 @@
           <article class="project-card reveal" data-category="ecommerce all">
             <div class="project-media">
               <span class="project-badge-top">Cliente Real • PYME</span>
-              <div class="project-media-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9h1M9 13h1M9 17h1"/></svg>
-              </div>
+              <img src="assets/img/gmconstructora-logo.webp" alt="G&M Constructora" class="project-logo-img" style="border-radius: 12px;">
             </div>
             <div class="project-content">
               <div class="project-title-row">
@@ -278,7 +288,7 @@
           <article class="project-card reveal" data-category="ecommerce all">
             <div class="project-media">
               <span class="project-badge-top">Emprendimiento Propio • En Vivo</span>
-              <img src="assets/img/notes-and-sillage.png" alt="Notes and Sillage">
+              <img src="assets/img/notes-and-sillage-logo.webp" alt="Notes & Sillage" class="project-logo-img" style="border-radius: 14px;">
             </div>
             <div class="project-content">
               <div class="project-title-row">
@@ -328,7 +338,7 @@
           <article class="project-card reveal" data-category="mobile ecommerce all">
             <div class="project-media">
               <span class="project-badge-top">E-commerce Omnicanal</span>
-              <img src="assets/img/ferremas-preview.png" alt="FerreMas Preview">
+              <img src="assets/img/logotipo.svg" alt="FerreMas" class="project-logo-img" style="max-width: 175px;">
             </div>
             <div class="project-content">
               <div class="project-title-row">
@@ -425,9 +435,7 @@
           <article class="project-card reveal" data-category="ecommerce saas all">
             <div class="project-media">
               <span class="project-badge-top">E-commerce PYME • Gestión</span>
-              <div class="project-media-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-              </div>
+              <img src="assets/img/nekobeans-logo.gif" alt="NekoBeans" class="project-logo-img" style="max-width: 130px; border-radius: 14px;">
             </div>
             <div class="project-content">
               <div class="project-title-row">
@@ -944,9 +952,10 @@
           </p>
 
           <div class="contact-actions">
-            <a href="mailto:nico.alexander.m.m@gmail.com" class="btn btn-primary" data-action="copy-email">
+            <a href="mailto:nico.alexander.m.m@gmail.com" class="btn btn-primary btn-copy-email" data-action="copy-email">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              <span>Copiar Correo (nico.alexander.m.m@gmail.com)</span>
+              <span class="email-full">Copiar Correo (nico.alexander.m.m@gmail.com)</span>
+              <span class="email-short">Copiar Correo</span>
             </a>
             
             <a href="assets/cv-nicolas-munoz.pdf" class="btn btn-secondary" download>
