@@ -1,298 +1,426 @@
 #!/usr/bin/env python3
 """
 Generador automático de CV en PDF para Nicolás Muñoz (catstudio.cl)
-Compila un documento A4 profesional, ATS-friendly y sincronizado con el portafolio.
+Genera un documento A4 profesional, ATS-friendly, con tipografía TrueType 100% embebida
+y sincronizado con los datos, proyectos y certificaciones del portafolio.
 """
-import subprocess
 import os
+import sys
+import cairo
 
-def esc(s):
-    return s.replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
+PAGE_W = 595.28
+PAGE_H = 841.89
+MARGIN_L = 46.0
+MARGIN_R = 549.0
+USABLE_W = MARGIN_R - MARGIN_L
 
-def generate_postscript():
-    # A4 Dimensions in points (1 pt = 1/72 inch): 595.28 x 841.89
-    ps = []
-    ps.append("%!PS-Adobe-3.0")
-    ps.append("%%BoundingBox: 0 0 595 842")
-    ps.append("%%Pages: 2")
-    ps.append("%%EndComments")
+def wrap_text(ctx, text, max_width):
+    words = text.split(' ')
+    lines = []
+    current_line = []
+    for word in words:
+        test_line = ' '.join(current_line + [word])
+        w = ctx.text_extents(test_line).x_advance
+        if w <= max_width:
+            current_line.append(word)
+        else:
+            if current_line:
+                lines.append(' '.join(current_line))
+            current_line = [word]
+    if current_line:
+        lines.append(' '.join(current_line))
+    return lines
+
+def draw_bullet(ctx, x, y, bold_prefix, text, max_w, line_h=11.6, font_size=8.4):
+    ctx.save()
+    ctx.set_source_rgb(0.3, 0.35, 0.42)
+    ctx.arc(x + 3.5, y - 3, 1.8, 0, 2 * 3.14159)
+    ctx.fill()
     
-    # Procedures
-    ps.append("""
-    /FTitle { /Helvetica-Bold findfont 18 scalefont setfont } def
-    /FSub { /Helvetica-Bold findfont 10 scalefont setfont } def
-    /FSec { /Helvetica-Bold findfont 11 scalefont setfont } def
-    /FItem { /Helvetica-Bold findfont 9.5 scalefont setfont } def
-    /FBody { /Helvetica findfont 9 scalefont setfont } def
-    /FBodyB { /Helvetica-Bold findfont 9 scalefont setfont } def
-    /FSmall { /Helvetica findfont 8 scalefont setfont } def
-    /FDate { /Helvetica findfont 8.5 scalefont setfont } def
+    text_x = x + 12
+    avail_w1 = max_w - 12
     
-    /line {
-        newpath
-        moveto
-        lineto
-        stroke
-    } def
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    ctx.set_font_size(font_size)
+    prefix_w = ctx.text_extents(bold_prefix + ' ').x_advance if bold_prefix else 0
     
-    /bullet {
-        newpath
-        2 sub exch
-        2.2 0 360 arc
-        fill
-    } def
-    """)
+    words = text.strip().split(' ')
+    first_line_words = []
+    rem_words = []
     
-    # -------------------------------------------------------------
-    # PAGE 1
-    # -------------------------------------------------------------
-    ps.append("%%Page: 1 1")
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+    ctx.set_font_size(font_size)
     
-    # Header
-    ps.append(f"FSmall 0.4 setgray 50 805 moveto ({esc('ULTIMA ACTUALIZACION: NOVIEMBRE 2026 - SINCRONIZADO CON PORTAFOLIO')}) show")
-    ps.append(f"FTitle 0 setgray 50 782 moveto ({esc('Nicolas Alexsander Munoz Mendez')}) show")
-    ps.append(f"FSub 0.2 setgray 50 766 moveto ({esc('Desarrollador Full-Stack | Egresando de Ingenieria en Informatica (2026)')}) show")
-    
-    # Contact Row
-    ps.append(f"FSmall 0.3 setgray 50 750 moveto ({esc('Valparaiso, Chile   |   nico.alexander.m.m@gmail.com   |   +56 9 6878 7862   |   catstudio.cl   |   github.com/deralexsander')}) show")
-    
-    # Line divider
-    ps.append("0.8 setlinewidth 0.2 setgray 50 740 545 740 line")
-    
-    # Section: Perfil Profesional
-    ps.append(f"FSec 0 setgray 50 722 moveto ({esc('PERFIL PROFESIONAL')}) show")
-    ps.append("0.4 setlinewidth 0.7 setgray 50 716 545 716 line")
-    
-    profile_lines = [
-        "Desarrollador con solida formacion en ingenieria de software, arquitectura de sistemas y diseno de interfaces UI/UX.",
-        "Experiencia comprobada en despliegue de soluciones SaaS en produccion, desarrollo frontend reactivo con HTMX y CSS3",
-        "modular, infraestructura cloud (Railway, Cloudflare, dominios y certificados SSL/TLS), seguridad de sesiones (2FA/OTP con",
-        "Gmail API, tokens HMAC) y consumo eficiente de APIs RESTful. Trabajo colaborativo bajo marco agil Scrum y primer",
-        "lugar regional en robotica competitiva y resolucion algoritmica."
-    ]
-    y = 702
-    ps.append("FBody 0.15 setgray")
-    for l in profile_lines:
-        ps.append(f"50 {y} moveto ({esc(l)}) show")
-        y -= 12
+    curr_w = prefix_w
+    for i, w in enumerate(words):
+        test_w = ctx.text_extents((' ' if first_line_words else '') + w).x_advance
+        if curr_w + test_w <= avail_w1:
+            first_line_words.append(w)
+            curr_w += test_w
+        else:
+            rem_words = words[i:]
+            break
+            
+    curr_y = y
+    if bold_prefix:
+        ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+        ctx.set_source_rgb(0.06, 0.09, 0.15)
+        ctx.move_to(text_x, curr_y)
+        ctx.show_text(bold_prefix + ' ')
         
-    # Section: Proyectos y Experiencia Tecnica
-    y -= 6
-    ps.append(f"FSec 0 setgray 50 {y} moveto ({esc('PROYECTOS Y EXPERIENCIA TECNICA')}) show")
-    y -= 6
-    ps.append(f"0.4 setlinewidth 0.7 setgray 50 {y} 545 {y} line")
-    y -= 16
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+    ctx.set_source_rgb(0.16, 0.2, 0.26)
+    ctx.move_to(text_x + prefix_w, curr_y)
+    ctx.show_text(' '.join(first_line_words))
+    curr_y += line_h
     
-    # 1. SmartBids
-    ps.append(f"FItem 0 setgray 50 {y} moveto ({esc('SmartBids - SaaS de Inteligencia Comercial y Licitaciones Publicas')}) show")
-    ps.append(f"FDate 0.4 setgray 450 {y} moveto ({esc('Ago 2025 - Dic 2025')}) show")
-    y -= 12
-    ps.append(f"FSmall 0.2 setgray 50 {y} moveto ({esc('Rol: Team Developer - Frontend, Cloud & Security   |   Cliente Real en Produccion   |   smartbids.cl')}) show")
-    y -= 13
-    
-    sb_bullets = [
-        "Frontend & UI/UX: Disene e implemente la interfaz responsiva, accesible y ultra veloz con HTML5, CSS3 modular (Dark",
-        "Theme) y HTMX, eliminando la sobrecarga de SPAs pesadas y garantizando una experiencia fluida.",
-        "Infraestructura Cloud: Despliegue en produccion sobre Railway, configuracion de dominio corporativo propio (smartbids.cl)",
-        "y certificados de seguridad estricta SSL/TLS.",
-        "Seguridad & Identidad: Implemente la capa de autenticacion de dos factores (2FA / OTP transaccional con Gmail API REST),",
-        "control de sesiones seguras y validacion de tokens con firmas HMAC.",
-        "Metodologia Agil: Trabajo en equipo multidisciplinario bajo marco Scrum estructurado en iteraciones cortas (Sprints)",
-        "con bitacoras semanales de avance y mitigacion de bloqueos."
-    ]
-    ps.append("FBody 0.15 setgray")
-    for b in sb_bullets:
-        if not b.startswith("Theme") and not b.startswith("y certificados") and not b.startswith("control de") and not b.startswith("con bitacoras"):
-            ps.append(f"56 {y+4} bullet")
-            ps.append(f"64 {y} moveto ({esc(b)}) show")
+    curr_line = []
+    for w in rem_words:
+        test_line = (' '.join(curr_line + [w]))
+        if ctx.text_extents(test_line).x_advance <= avail_w1:
+            curr_line.append(w)
         else:
-            ps.append(f"64 {y} moveto ({esc(b)}) show")
-        y -= 11.5
-
-    # 2. Notes & Sillage
-    y -= 4
-    ps.append(f"FItem 0 setgray 50 {y} moveto ({esc('Notes & Sillage - Catalogo Digital de Perfumeria & E-Commerce Ligero')}) show")
-    ps.append(f"FDate 0.4 setgray 445 {y} moveto ({esc('2025 - En Produccion')}) show")
-    y -= 12
-    ps.append(f"FSmall 0.2 setgray 50 {y} moveto ({esc('Rol: Creador & Desarrollador Principal   |   Solucion JAMstack en Produccion   |   notes.cl')}) show")
-    y -= 13
-    
-    ns_bullets = [
-        "Disene y desarrolle una plataforma e-commerce y catalogo interactivo mobile-first sin dependencia de servidores",
-        "externos, garantizando tiempos de renderizado inferiores a 800ms.",
-        "Infraestructura y Redes: Gestion de dominio propio (notes.cl), proxy perimetral de cache y SSL estricto con Cloudflare,",
-        "y automatizacion de despliegues (CI/CD) con GitHub Pages.",
-        "Buscador predictivo con tolerancia a errores tipograficos y checkout automatizado hacia WhatsApp."
-    ]
-    ps.append("FBody 0.15 setgray")
-    for b in ns_bullets:
-        if not b.startswith("externos") and not b.startswith("y automatizacion"):
-            ps.append(f"56 {y+4} bullet")
-            ps.append(f"64 {y} moveto ({esc(b)}) show")
-        else:
-            ps.append(f"64 {y} moveto ({esc(b)}) show")
-        y -= 11.5
-
-    # 3. GM Constructora
-    y -= 4
-    ps.append(f"FItem 0 setgray 50 {y} moveto ({esc('Constructora Godoy & Mendez SpA - Plataforma Corporativa')}) show")
-    ps.append(f"FDate 0.4 setgray 518 {y} moveto ({esc('2025')}) show")
-    y -= 12
-    ps.append(f"FSmall 0.2 setgray 50 {y} moveto ({esc('Rol: Consultor Web & Desarrollador Full-Stack   |   Cliente Real PYME')}) show")
-    y -= 13
-    
-    gm_bullets = [
-        "Servicio integral de consultoria y desarrollo: desde levantamiento de requerimientos y diseno UI/UX hasta la puesta",
-        "en marcha tecnica y corporativa del sitio web.",
-        "Administracion de infraestructura: Compra y configuracion de dominios, zonas DNS, SSL y correos corporativos."
-    ]
-    ps.append("FBody 0.15 setgray")
-    for b in gm_bullets:
-        if not b.startswith("en marcha"):
-            ps.append(f"56 {y+4} bullet")
-            ps.append(f"64 {y} moveto ({esc(b)}) show")
-        else:
-            ps.append(f"64 {y} moveto ({esc(b)}) show")
-        y -= 11.5
-
-    # Page 1 Footer
-    ps.append(f"FSmall 0.5 setgray 50 35 moveto ({esc('Nicolas Alexsander Munoz Mendez - Pagina 1 de 2')}) show")
-    ps.append(f"FSmall 0.5 setgray 440 35 moveto ({esc('catstudio.cl - Portafolio Oficial')}) show")
-    ps.append("showpage")
-    
-    # -------------------------------------------------------------
-    # PAGE 2
-    # -------------------------------------------------------------
-    ps.append("%%Page: 2 2")
-    y = 800
-    ps.append(f"FTitle 0 setgray 50 {y} moveto ({esc('Nicolas Alexsander Munoz Mendez')}) show")
-    y -= 16
-    ps.append(f"FSub 0.3 setgray 50 {y} moveto ({esc('Curriculum Vitae Tecnico - Continuacion')}) show")
-    y -= 10
-    ps.append(f"0.8 setlinewidth 0.2 setgray 50 {y} 545 {y} line")
-    y -= 22
-    
-    # FerreMas & CATTECH
-    ps.append(f"FSec 0 setgray 50 {y} moveto ({esc('EXPERIENCIA EN PROYECTOS INTEGRADORES')}) show")
-    y -= 6
-    ps.append(f"0.4 setlinewidth 0.7 setgray 50 {y} 545 {y} line")
-    y -= 16
-    
-    ps.append(f"FItem 0 setgray 50 {y} moveto ({esc('FerreMas - E-commerce y Gestion Logistica')}) show")
-    ps.append(f"FDate 0.4 setgray 450 {y} moveto ({esc('Abr 2025 - Jun 2025')}) show")
-    y -= 12
-    ps.append(f"FSmall 0.2 setgray 50 {y} moveto ({esc('Rol: Desarrollador Full-Stack   |   Android Studio, Java/Kotlin, Firebase, Google Maps API')}) show")
-    y -= 13
-    
-    fm_bullets = [
-        "Asegure el flujo de autenticacion de usuarios mediante Google OAuth 2.0 y control de acceso por roles (RBAC).",
-        "Integre la API de Google Maps para geolocalizacion y calculo automatico de despachos entre sucursales."
-    ]
-    ps.append("FBody 0.15 setgray")
-    for b in fm_bullets:
-        ps.append(f"56 {y+4} bullet")
-        ps.append(f"64 {y} moveto ({esc(b)}) show")
-        y -= 12
+            ctx.move_to(text_x, curr_y)
+            ctx.show_text(' '.join(curr_line))
+            curr_y += line_h
+            curr_line = [w]
+    if curr_line:
+        ctx.move_to(text_x, curr_y)
+        ctx.show_text(' '.join(curr_line))
+        curr_y += line_h
         
-    y -= 4
-    ps.append(f"FItem 0 setgray 50 {y} moveto ({esc('Servicio CATTECH - Plataforma de Integracion y Pagos')}) show")
-    ps.append(f"FDate 0.4 setgray 448 {y} moveto ({esc('Ago 2024 - Nov 2024')}) show")
-    y -= 12
-    ps.append(f"FSmall 0.2 setgray 50 {y} moveto ({esc('Rol: Lider Tecnico / Desarrollador Full-Stack   |   Cloud Firestore, Mercado Pago SDK, JavaScript ES6+')}) show")
-    y -= 13
-    
-    cat_bullets = [
-        "Procese transacciones financieras integrando la API de Mercado Pago y programe motor de validacion de transferencias.",
-        "Coordine a un equipo de 2 desarrolladores, garantizando entregas incrementales bajo metodologia agil."
-    ]
-    ps.append("FBody 0.15 setgray")
-    for b in cat_bullets:
-        ps.append(f"56 {y+4} bullet")
-        ps.append(f"64 {y} moveto ({esc(b)}) show")
-        y -= 12
+    ctx.restore()
+    return curr_y
 
-    # Section: Habilidades Tecnicas
-    y -= 10
-    ps.append(f"FSec 0 setgray 50 {y} moveto ({esc('HABILIDADES TECNICAS')}) show")
-    y -= 6
-    ps.append(f"0.4 setlinewidth 0.7 setgray 50 {y} 545 {y} line")
-    y -= 16
+def draw_header(ctx, y):
+    # Top Tag
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    ctx.set_font_size(7.5)
+    ctx.set_source_rgb(0.42, 0.48, 0.56)
+    ctx.move_to(MARGIN_L, y)
+    ctx.show_text('ÚLTIMA ACTUALIZACIÓN: NOVIEMBRE 2026 • SINCRONIZADO CON PORTAFOLIO')
+    y += 18.0
+
+    # Name
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    ctx.set_font_size(20.0)
+    ctx.set_source_rgb(0.05, 0.08, 0.14)
+    ctx.move_to(MARGIN_L, y)
+    ctx.show_text('Nicolás Alexsander Muñoz Méndez')
+    y += 15.0
+
+    # Subtitle / Headline
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    ctx.set_font_size(10.0)
+    ctx.set_source_rgb(0.18, 0.24, 0.32)
+    ctx.move_to(MARGIN_L, y)
+    ctx.show_text('Desarrollador Full-Stack Junior | Egresando de Ingeniería en Informática (2026)')
+    y += 15.0
+
+    # Contact Bar with interactive clickable links
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+    ctx.set_font_size(8.4)
     
+    cur_x = MARGIN_L
+    def add_contact_item(text, link=None, sep='  •  '):
+        nonlocal cur_x, y
+        if link:
+            ctx.set_source_rgb(0.1, 0.35, 0.75)
+            ctx.move_to(cur_x, y)
+            ctx.tag_begin(cairo.TAG_LINK, f"uri='{link}'")
+            ctx.show_text(text)
+            ctx.tag_end(cairo.TAG_LINK)
+            cur_x += ctx.text_extents(text).x_advance
+        else:
+            ctx.set_source_rgb(0.28, 0.34, 0.42)
+            ctx.move_to(cur_x, y)
+            ctx.show_text(text)
+            cur_x += ctx.text_extents(text).x_advance
+        if sep:
+            ctx.set_source_rgb(0.55, 0.6, 0.68)
+            ctx.move_to(cur_x, y)
+            ctx.show_text(sep)
+            cur_x += ctx.text_extents(sep).x_advance
+            
+    add_contact_item('Valparaíso, Chile')
+    add_contact_item('nico.alexander.m.m@gmail.com', 'mailto:nico.alexander.m.m@gmail.com')
+    add_contact_item('+56 9 6878 7862', 'tel:+56968787862')
+    add_contact_item('catstudio.cl', 'https://catstudio.cl')
+    add_contact_item('github.com/deralexsander', 'https://github.com/deralexsander', sep=None)
+    y += 11.0
+
+    # Divider Line
+    ctx.set_source_rgb(0.8, 0.84, 0.9)
+    ctx.set_line_width(0.75)
+    ctx.move_to(MARGIN_L, y)
+    ctx.line_to(MARGIN_R, y)
+    ctx.stroke()
+    y += 16.0
+    return y
+
+def draw_section_title(ctx, y, title):
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    ctx.set_font_size(10.5)
+    ctx.set_source_rgb(0.06, 0.1, 0.16)
+    ctx.move_to(MARGIN_L, y)
+    ctx.show_text(title)
+    y += 4.5
+    ctx.set_source_rgb(0.68, 0.73, 0.8)
+    ctx.set_line_width(0.5)
+    ctx.move_to(MARGIN_L, y)
+    ctx.line_to(MARGIN_R, y)
+    ctx.stroke()
+    y += 14.0
+    return y
+
+def draw_footer(ctx, page_num, total_pages=2):
+    ctx.set_source_rgb(0.82, 0.86, 0.9)
+    ctx.set_line_width(0.5)
+    ctx.move_to(MARGIN_L, 810)
+    ctx.line_to(MARGIN_R, 810)
+    ctx.stroke()
+
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+    ctx.set_font_size(7.8)
+    ctx.set_source_rgb(0.45, 0.5, 0.58)
+    ctx.move_to(MARGIN_L, 822)
+    ctx.show_text('Nicolás Alexsander Muñoz Méndez — Currículum Vitae')
+    
+    right_text = f'Página {page_num} de {total_pages}  •  '
+    ctx.move_to(MARGIN_R - 120, 822)
+    ctx.show_text(right_text)
+    w_rt = ctx.text_extents(right_text).x_advance
+    
+    ctx.move_to(MARGIN_R - 120 + w_rt, 822)
+    ctx.set_source_rgb(0.1, 0.35, 0.75)
+    ctx.tag_begin(cairo.TAG_LINK, "uri='https://catstudio.cl'")
+    ctx.show_text('catstudio.cl')
+    ctx.tag_end(cairo.TAG_LINK)
+
+def generate_pdf(output_path):
+    surface = cairo.PDFSurface(output_path, PAGE_W, PAGE_H)
+    ctx = cairo.Context(surface)
+
+    # ================= PAGE 1 =================
+    y = draw_header(ctx, 48.0)
+
+    # 1. PERFIL PROFESIONAL
+    y = draw_section_title(ctx, y, 'PERFIL PROFESIONAL')
+    profile_text = (
+        'Desarrollador con sólida formación en ingeniería de software, arquitectura de sistemas y diseño de interfaces UI/UX. '
+        'Experiencia comprobada en despliegue de soluciones SaaS en producción, desarrollo frontend reactivo con HTMX y CSS3 modular, '
+        'infraestructura cloud (Railway, Cloudflare, dominios y certificados SSL/TLS), seguridad de sesiones (2FA/OTP transaccional con '
+        'Gmail API REST, tokens HMAC) y consumo eficiente de APIs RESTful. Trabajo colaborativo bajo marco ágil Scrum y primer '
+        'lugar regional en robótica competitiva y resolución algorítmica.'
+    )
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+    ctx.set_font_size(8.8)
+    ctx.set_source_rgb(0.16, 0.2, 0.26)
+    for line in wrap_text(ctx, profile_text, USABLE_W):
+        ctx.move_to(MARGIN_L, y)
+        ctx.show_text(line)
+        y += 12.3
+    y += 8.0
+
+    # 2. PROYECTOS Y EXPERIENCIA TÉCNICA
+    y = draw_section_title(ctx, y, 'PROYECTOS Y EXPERIENCIA TÉCNICA')
+
+    projects = [
+        {
+            'title': 'SmartBids – SaaS de Inteligencia Comercial y Licitaciones Públicas',
+            'date': 'Ago 2025 – Dic 2025',
+            'sub': 'Rol: Team Developer (Frontend, Cloud & Security) | Cliente Real en Producción | smartbids.cl',
+            'link': 'https://smartbids.cl',
+            'bullets': [
+                ('Frontend & UI/UX:', 'Diseñé e implementé la interfaz responsiva, accesible y de alta velocidad con HTML5, CSS3 modular (Dark Theme) y HTMX, eliminando la sobrecarga de SPAs complejas y optimizando tiempos de carga.'),
+                ('Infraestructura Cloud:', 'Despliegue en producción sobre Railway, configuración de dominio corporativo propio (smartbids.cl) y aprovisionamiento de certificados SSL/TLS estricto.'),
+                ('Seguridad & Identidad:', 'Implementé la capa de autenticación de dos factores (2FA / OTP transaccional con Gmail API REST), control de sesiones seguras y validación de tokens con firmas HMAC.'),
+                ('Metodología Ágil:', 'Trabajo en equipo multidisciplinario bajo marco Scrum en iteraciones cortas (Sprints) con control de versiones en GitHub y revisiones de código continuo.')
+            ]
+        },
+        {
+            'title': 'FerreMas – E-commerce y Gestión Logística',
+            'date': 'Abr 2025 – Jun 2025',
+            'sub': 'Rol: Desarrollador Full-Stack (Proyecto Académico Integrador) | Android Studio, Java/Kotlin, Firebase, Google Maps API',
+            'bullets': [
+                ('Autenticación Segura:', 'Aseguré el flujo de autenticación de usuarios mediante Google OAuth 2.0 y Firebase Authentication, eliminando incidencias de acceso no autorizado.'),
+                ('Control de Acceso RBAC:', 'Optimicé la gestión operativa diferenciando perfiles mediante Control de Acceso Basado en Roles entre Clientes y Administradores.'),
+                ('Geolocalización & Rutas:', 'Integré la API de Google Maps para geolocalización y cálculo de despachos entre sucursales, reduciendo el error en la selección de locales.')
+            ]
+        },
+        {
+            'title': 'Servicio CATTECH – Plataforma de Integración y Pagos',
+            'date': 'Ago 2024 – Nov 2024',
+            'sub': 'Rol: Líder Técnico / Desarrollador Full-Stack (Proyecto Académico Integrador) | Cloud Firestore, REST APIs, Mercado Pago SDK',
+            'bullets': [
+                ('Pasarela de Pagos:', 'Procesé transacciones financieras seguras integrando la API de Mercado Pago y programé un motor de validación para transferencias bancarias.'),
+                ('Persistencia NoSQL:', 'Migré la capa de persistencia a Cloud Firestore, disminuyendo la latencia de consulta en un 40% y configurando reglas de seguridad NoSQL granulares.'),
+                ('Liderazgo Técnico:', 'Coordiné a un equipo de 2 desarrolladores, garantizando entregas bajo metodología ágil y asegurando cobertura de despacho.')
+            ]
+        },
+        {
+            'title': 'NekoBeansWeb – Sistema de Administración para PYMES',
+            'date': 'Abr 2023 – Jul 2023',
+            'sub': 'Rol: Desarrollador Full-Stack (Proyecto Académico Integrador) | Django, PostgreSQL, Bootstrap, HTML5/CSS3',
+            'bullets': [
+                ('Gestión Comercial:', 'Digitalicé el circuito comercial de ventas y cotizaciones para PYMES mediante formularios dinámicos y segregación de roles (Vendedor/Cliente).'),
+                ('Modelo Relacional:', 'Diseñé el esquema relacional en PostgreSQL garantizando integridad transaccional en flujos de pago híbridos (efectivo y transferencia).')
+            ]
+        }
+    ]
+
+    for p in projects:
+        ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+        ctx.set_font_size(9.4)
+        ctx.set_source_rgb(0.06, 0.09, 0.15)
+        ctx.move_to(MARGIN_L, y)
+        ctx.show_text(p['title'])
+        
+        # Date right aligned
+        ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+        ctx.set_font_size(8.3)
+        ctx.set_source_rgb(0.4, 0.46, 0.54)
+        date_w = ctx.text_extents(p['date']).x_advance
+        ctx.move_to(MARGIN_R - date_w, y)
+        ctx.show_text(p['date'])
+        y += 11.0
+        
+        # Subtitle
+        ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+        ctx.set_font_size(8.2)
+        ctx.set_source_rgb(0.24, 0.28, 0.35)
+        ctx.move_to(MARGIN_L, y)
+        ctx.show_text(p['sub'])
+        y += 12.0
+        
+        # Bullets
+        for b_prefix, b_text in p['bullets']:
+            y = draw_bullet(ctx, MARGIN_L, y, b_prefix, b_text, USABLE_W, line_h=11.6, font_size=8.4)
+            y += 1.5
+        y += 4.5
+
+    draw_footer(ctx, 1)
+    surface.show_page()
+
+    # ================= PAGE 2 =================
+    y = 48.0
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    ctx.set_font_size(8.0)
+    ctx.set_source_rgb(0.42, 0.48, 0.56)
+    ctx.move_to(MARGIN_L, y)
+    ctx.show_text('NICOLÁS ALEXSANDER MUÑOZ MÉNDEZ  •  CURRÍCULUM VITAE (CONTINUACIÓN)')
+    y += 8.0
+
+    ctx.set_source_rgb(0.78, 0.82, 0.88)
+    ctx.set_line_width(0.75)
+    ctx.move_to(MARGIN_L, y)
+    ctx.line_to(MARGIN_R, y)
+    ctx.stroke()
+    y += 18.0
+
+    # 1. HABILIDADES TÉCNICAS Y STACK
+    y = draw_section_title(ctx, y, 'HABILIDADES TÉCNICAS Y STACK TECNOLÓGICO')
     skills = [
-        ("Lenguajes:", "Python, JavaScript (ES6+), TypeScript, SQL, Java, HTML5, CSS3 moderno."),
-        ("Frontend & UI/UX:", "HTMX, Diseno Web Responsivo (Mobile-First), Apple HIG / Liquid Glass, Tailwind CSS, Bootstrap."),
-        ("Backend & APIs:", "Django, Django REST Framework, Node.js, arquitectura de microservicios y APIs RESTful."),
-        ("Cloud & Seguridad:", "Railway, Cloudflare, GitHub Actions (CI/CD), Firebase Authentication, tokens HMAC, 2FA/OTP, SSL/TLS, Linux."),
-        ("Bases de Datos & ML:", "PostgreSQL (relacional normalizada), Cloud Firestore, Scikit-Learn, XGBoost, Pandas."),
-        ("Metodologias:", "Scrum (Planificacion por Sprints, control de avances en bitacoras), Kanban, Git / GitHub.")
+        ('Lenguajes de Programación:', 'Python, JavaScript (ES6+), TypeScript, Java, SQL, HTML5, CSS3/SCSS.'),
+        ('Backend y APIs:', 'Django, Django REST Framework, Node.js, arquitectura RESTful, microservicios, seguridad 2FA/HMAC.'),
+        ('Frontend y Móvil:', 'HTMX, CSS3 Modular (Dark Theme), diseño responsivo accesible (WCAG), Bootstrap, Android Studio.'),
+        ('Datos y Machine Learning:', 'PostgreSQL, Cloud Firestore (GCP), Scikit-Learn, XGBoost, modelado relacional y NoSQL indexado.'),
+        ('Cloud, DevOps y Seguridad:', 'Railway, Cloudflare, dominios corporativos, certificados SSL/TLS, Git, GitHub, Linux, CI/CD.'),
+        ('Metodologías de Trabajo:', 'Scrum, Kanban, Pair Programming, Code Reviews, levantamiento de requerimientos técnicos.')
     ]
-    for cat, val in skills:
-        ps.append(f"FBodyB 0 setgray 50 {y} moveto ({esc(cat)}) show")
-        ps.append(f"FBody 0.2 setgray 165 {y} moveto ({esc(val)}) show")
-        y -= 13
+    for prefix, desc in skills:
+        y = draw_bullet(ctx, MARGIN_L, y, prefix, desc, USABLE_W, line_h=12.0, font_size=8.6)
+        y += 2.0
+    y += 10.0
 
-    # Section: Educacion
-    y -= 10
-    ps.append(f"FSec 0 setgray 50 {y} moveto ({esc('EDUCACION')}) show")
-    y -= 6
-    ps.append(f"0.4 setlinewidth 0.7 setgray 50 {y} 545 {y} line")
-    y -= 16
-    
-    ps.append(f"FItem 0 setgray 50 {y} moveto ({esc('Duoc UC - Ingenieria en Informatica')}) show")
-    ps.append(f"FDate 0.4 setgray 470 {y} moveto ({esc('2023 - 2026')}) show")
-    y -= 11
-    ps.append(f"FSmall 0.3 setgray 50 {y} moveto ({esc('Cursando ultimo ano de carrera - Egreso 2026')}) show")
-    y -= 16
-    
-    ps.append(f"FItem 0 setgray 50 {y} moveto ({esc('Colegio Don Orione - Tecnico de Nivel Medio en Electronica')}) show")
-    ps.append(f"FDate 0.4 setgray 480 {y} moveto ({esc('Graduado')}) show")
-    y -= 18
+    # 2. EDUCACIÓN
+    y = draw_section_title(ctx, y, 'EDUCACIÓN')
+    edu = [
+        {
+            'title': 'Duoc UC – Sede Viña del Mar',
+            'date': '2023 – 2026',
+            'sub': 'Carrera: Ingeniería en Informática (Egresando / Cursando último año)',
+            'bullets': [
+                ('Formación Especializada:', 'Enfoque práctico en ingeniería de software, arquitectura de sistemas, bases de datos relacionales y NoSQL, desarrollo full-stack y gestión ágil de proyectos tecnológicos.')
+            ]
+        },
+        {
+            'title': 'Colegio Don Orione',
+            'date': '2019 – 2022',
+            'sub': 'Titulación: Técnico de Nivel Medio en Electrónica',
+            'bullets': [
+                ('Bases Técnicas:', 'Formación en circuitos lógicos, microcontroladores, automatización, diseño de hardware y pensamiento analítico para resolución de problemas complejos.')
+            ]
+        }
+    ]
+    for e in edu:
+        ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+        ctx.set_font_size(9.4)
+        ctx.set_source_rgb(0.06, 0.09, 0.15)
+        ctx.move_to(MARGIN_L, y)
+        ctx.show_text(e['title'])
+        
+        ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+        ctx.set_font_size(8.3)
+        ctx.set_source_rgb(0.4, 0.46, 0.54)
+        date_w = ctx.text_extents(e['date']).x_advance
+        ctx.move_to(MARGIN_R - date_w, y)
+        ctx.show_text(e['date'])
+        y += 11.0
+        
+        ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+        ctx.set_font_size(8.2)
+        ctx.set_source_rgb(0.24, 0.28, 0.35)
+        ctx.move_to(MARGIN_L, y)
+        ctx.show_text(e['sub'])
+        y += 12.0
+        
+        for b_prefix, b_text in e['bullets']:
+            y = draw_bullet(ctx, MARGIN_L, y, b_prefix, b_text, USABLE_W, line_h=11.6, font_size=8.4)
+            y += 1.5
+        y += 4.0
+    y += 10.0
 
-    # Section: Certificaciones y Distinciones
-    ps.append(f"FSec 0 setgray 50 {y} moveto ({esc('CERTIFICACIONES INTERNACIONALES Y DISTINCIONES')}) show")
-    y -= 6
-    ps.append(f"0.4 setlinewidth 0.7 setgray 50 {y} 545 {y} line")
-    y -= 16
-    
+    # 3. CERTIFICACIONES INTERNACIONALES
+    y = draw_section_title(ctx, y, 'CERTIFICACIONES INTERNACIONALES')
     certs = [
-        "Cisco Networking Academy & Python Institute: Partner: PCAP - Programming Essentials in Python (Julio 2023).",
-        "CertiProf International: DevOps Foundation Professional Certificate (DFPC) - ID: TLZZKDZKTHL-XPXRMHPSH-RLKFTJJHSS.",
-        "CertiProf International: DevOps Essentials Professional Certificate (DEPC) - ID: TLZZLLDVDKK-XPWTMQXHS-RLKRJKLLTT.",
-        "Distincion MakeX Robotics: 1.er Lugar Regional - Medalla de Oro en algoritmos de navegacion autonoma en tiempo real."
+        ('Cisco Networking Academy & Python Institute:', 'Partner: PCAP – Programming Essentials in Python (Julio 2023).'),
+        ('CertiProf International:', 'DevOps Foundation Professional Certificate (DFPC™) – ID: TLZZKDZKTHL-XPXRMHPSH-RLKFTJJHSS.'),
+        ('CertiProf International:', 'DevOps Essentials Professional Certificate (DEPC®) – ID: TLZZLLDVDKK-XPWTMQXHS-RLKRJKLLTT.')
     ]
-    ps.append("FBody 0.15 setgray")
-    for c in certs:
-        ps.append(f"56 {y+4} bullet")
-        ps.append(f"64 {y} moveto ({esc(c)}) show")
-        y -= 14
+    for prefix, desc in certs:
+        y = draw_bullet(ctx, MARGIN_L, y, prefix, desc, USABLE_W, line_h=12.0, font_size=8.6)
+        y += 2.0
+    y += 10.0
 
-    # Page 2 Footer
-    ps.append(f"FSmall 0.5 setgray 50 35 moveto ({esc('Nicolas Alexsander Munoz Mendez - Pagina 2 de 2')}) show")
-    ps.append(f"FSmall 0.5 setgray 420 35 moveto ({esc('Descargado desde catstudio.cl')}) show")
-    ps.append("showpage")
-    
-    return "\n".join(ps)
+    # 4. DISTINCIONES Y LOGROS DESTACADOS
+    y = draw_section_title(ctx, y, 'DISTINCIONES Y LOGROS DESTACADOS')
+    awards = [
+        ('1.er Lugar Regional – MakeX Robotics Competition:', 'Medalla de Oro en diseño y programación de algoritmos de navegación autónoma en tiempo real bajo condiciones de alta presión competitiva.')
+    ]
+    for prefix, desc in awards:
+        y = draw_bullet(ctx, MARGIN_L, y, prefix, desc, USABLE_W, line_h=12.0, font_size=8.6)
+        y += 2.0
+
+    draw_footer(ctx, 2)
+    surface.show_page()
+    surface.finish()
 
 def main():
-    repo_dir = "/home/alexsander/Escritorio/proyectos/deralexsander"
+    repo_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     assets_pdf = os.path.join(repo_dir, "assets", "cv-nicolas-munoz.pdf")
     root_pdf = os.path.join(repo_dir, "cv profecional.pdf")
-    temp_ps = "/tmp/cv_nicolas.ps"
     
-    print("⚡ Generando PostScript con datos actualizados...")
-    ps_content = generate_postscript()
-    with open(temp_ps, "w", encoding="utf-8") as f:
-        f.write(ps_content)
-        
-    print(f"📦 Compilando PDF con ps2pdf hacia {assets_pdf}...")
-    res = subprocess.run(["ps2pdf", "-sPAPERSIZE=a4", temp_ps, assets_pdf], capture_output=True, text=True)
-    if res.returncode != 0:
-        print("Error en ps2pdf:", res.stderr)
-        return
-        
-    # Copiar a la raíz también para compatibilidad
-    subprocess.run(["cp", assets_pdf, root_pdf])
-    print(f"✅ PDF generado exitosamente en:\n  - {assets_pdf}\n  - {root_pdf}")
+    print("⚡ Compilando CV profesional en PDF con Cairo y TrueType...")
+    generate_pdf(assets_pdf)
+    
+    # Copia a la raíz para compatibilidad con accesos previos
+    import shutil
+    shutil.copy2(assets_pdf, root_pdf)
+    
+    print(f"✅ CV generado exitosamente con fuentes TrueType embebidas:")
+    print(f"   • {assets_pdf}")
+    print(f"   • {root_pdf}")
 
 if __name__ == "__main__":
     main()
