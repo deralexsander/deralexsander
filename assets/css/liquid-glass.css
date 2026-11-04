@@ -1,0 +1,343 @@
+/* ==========================================================================
+   APPLE LIQUID GLASS UI LAYER - PORTAFOLIO NICOLÁS MUÑOZ (catstudio.cl)
+   Diseño: Sistema Liquid Glass adaptado desde dev-vault / Glisse (Kelvin Zhang)
+   Efectos: Refracción óptica, specular highlights, desenfoque profundo y física spring
+   ========================================================================== */
+
+:root {
+  /* Tokens de Vidrio Líquido (Liquid Glass Dark Mode) */
+  --liquid-glass-bg: rgba(13, 20, 36, 0.58);
+  --liquid-glass-bg-hover: rgba(18, 28, 52, 0.72);
+  --liquid-glass-bg-elevated: rgba(18, 30, 56, 0.82);
+  --liquid-glass-bg-subtle: rgba(255, 255, 255, 0.04);
+  
+  /* Óptica y Desenfoque */
+  --liquid-glass-blur: 28px;
+  --liquid-glass-saturate: 195%;
+  
+  /* Borde Biselado & Reflejos Especulares de Luz */
+  --liquid-glass-border: 1px solid rgba(255, 255, 255, 0.12);
+  --liquid-glass-border-hover: 1px solid rgba(96, 165, 250, 0.35);
+  --liquid-glass-specular: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3);
+  --liquid-glass-specular-bright: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3);
+    
+  /* Sombras y Profundidad Apple */
+  --liquid-glass-shadow-sm: 0 8px 24px -6px rgba(0, 0, 0, 0.5), 0 2px 6px -2px rgba(0, 0, 0, 0.3);
+  --liquid-glass-shadow-md: 0 16px 40px -8px rgba(0, 0, 0, 0.65), 0 0 25px -5px rgba(37, 99, 235, 0.18);
+  --liquid-glass-shadow-lg: 0 28px 65px -12px rgba(0, 0, 0, 0.85), 0 0 45px -8px rgba(59, 130, 246, 0.28);
+}
+
+/* ==========================================================================
+   1. BARRA DE NAVEGACIÓN FLOTANTE (Apple Liquid Glass Dock Style)
+   ========================================================================== */
+.site-navbar {
+  background: var(--liquid-glass-bg) !important;
+  backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) !important;
+  border: var(--liquid-glass-border) !important;
+  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-md) !important;
+  position: relative;
+}
+
+.site-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.site-navbar:hover {
+  border-color: rgba(96, 165, 250, 0.4) !important;
+  box-shadow: var(--liquid-glass-specular-bright), var(--liquid-glass-shadow-lg) !important;
+}
+
+.nav-link {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   2. TARJETAS DE MÉTRICAS (Refractive Stat Panels)
+   ========================================================================== */
+.metric-card {
+  background: var(--liquid-glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(var(--liquid-glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(var(--liquid-glass-saturate)) !important;
+  border: var(--liquid-glass-border) !important;
+  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-sm) !important;
+  border-radius: 20px !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.metric-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.metric-card:hover {
+  background: var(--liquid-glass-bg-hover) !important;
+  border-color: rgba(96, 165, 250, 0.38) !important;
+  box-shadow: var(--liquid-glass-specular-bright), var(--liquid-glass-shadow-md) !important;
+  transform: translateY(-4px) scale(1.01) !important;
+}
+
+/* ==========================================================================
+   3. TARJETAS DE PROYECTOS (Liquid Glass Showcase)
+   ========================================================================== */
+.project-card {
+  background: var(--liquid-glass-bg) !important;
+  backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) !important;
+  border: var(--liquid-glass-border) !important;
+  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-md) !important;
+  border-radius: 26px !important;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+.project-card:hover {
+  background: var(--liquid-glass-bg-hover) !important;
+  border-color: rgba(96, 165, 250, 0.45) !important;
+  box-shadow: var(--liquid-glass-specular-bright), var(--liquid-glass-shadow-lg) !important;
+  transform: translateY(-6px) scale(1.008) !important;
+}
+
+/* Tags de Tecnologías translúcidos */
+.project-tags .tag {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  border-radius: 9999px !important;
+  color: #e2e8f0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.project-tags .tag:hover {
+  background: rgba(59, 130, 246, 0.18) !important;
+  border-color: rgba(96, 165, 250, 0.4) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   4. BOTONES APPLE (Pill Shape & Specular Bounce)
+   ========================================================================== */
+.btn {
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: scale(0.96) !important;
+}
+
+/* Botón Primario Liquid Glass */
+.btn-primary, .btn-nav-contact {
+  background: linear-gradient(135deg, #007aff 0%, #0056cc 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.6),
+    0 6px 20px rgba(0, 122, 255, 0.45) !important;
+}
+
+.btn-primary:hover, .btn-nav-contact:hover {
+  background: linear-gradient(135deg, #1a88ff 0%, #0066ee 100%) !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.75),
+    0 8px 26px rgba(0, 122, 255, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Botón Secundario Translúcido */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  color: #f1f5f9 !important;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    0 6px 18px rgba(0, 0, 0, 0.35) !important;
+  transform: translateY(-2px) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   5. FILTROS DE PROYECTO (Apple Segmented Glass Control)
+   ========================================================================== */
+.project-filters {
+  background: rgba(15, 23, 42, 0.5) !important;
+  backdrop-filter: blur(20px) saturate(var(--liquid-glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(var(--liquid-glass-saturate)) !important;
+  border: var(--liquid-glass-border) !important;
+  padding: 5px !important;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-sm) !important;
+}
+
+.filter-btn {
+  border-radius: 9999px !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  padding: 8px 18px !important;
+  transition: all 0.25s ease !important;
+}
+
+.filter-btn:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.filter-btn.active {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.45),
+    0 3px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ==========================================================================
+   6. CONTACT HUB & ACCIONES (Apple Glass Hero Card)
+   ========================================================================== */
+.contact-card {
+  background: linear-gradient(135deg, rgba(15, 25, 48, 0.7) 0%, rgba(10, 16, 32, 0.85) 100%) !important;
+  backdrop-filter: blur(36px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(210%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 3px 0 rgba(0, 0, 0, 0.4),
+    var(--liquid-glass-shadow-lg) !important;
+  border-radius: 36px !important;
+  position: relative;
+}
+
+.contact-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.contact-info-pills .info-item {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  border-radius: 9999px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.contact-info-pills .info-item:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(96, 165, 250, 0.4) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    0 6px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ==========================================================================
+   7. BADGES Y PILLS (Apple Translucent Badges)
+   ========================================================================== */
+.badge-status, .section-tag {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  border-radius: 9999px !important;
+}
+
+/* ==========================================================================
+   8. MEJORA DE LUCES AMBIENTALES DE FONDO (Para refracción Liquid Glass)
+   ========================================================================== */
+.ambient-glow-1 {
+  background: radial-gradient(circle, rgba(0, 122, 255, 0.32) 0%, rgba(30, 58, 138, 0.15) 55%, transparent 75%) !important;
+}
+
+.ambient-glow-2 {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(88, 86, 214, 0.1) 60%, transparent 75%) !important;
+}
+
+.ambient-glow-3 {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%) !important;
+}
