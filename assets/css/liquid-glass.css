@@ -1,343 +1,508 @@
 /* ==========================================================================
-   APPLE LIQUID GLASS UI LAYER - PORTAFOLIO NICOLÁS MUÑOZ (catstudio.cl)
-   Diseño: Sistema Liquid Glass adaptado desde dev-vault / Glisse (Kelvin Zhang)
-   Efectos: Refracción óptica, specular highlights, desenfoque profundo y física spring
+   MINIMALIST DARK OBSIDIAN DESIGN SYSTEM - NICOLÁS MUÑOZ (catstudio.cl)
+   Principios: Máxima calidad, sobriedad, paleta monocroma, jerarquía visual y 60fps
+   Inspirado en: Apple Pro UI, Dieter Rams, Linear y Vercel
    ========================================================================== */
 
 :root {
-  /* Tokens de Vidrio Líquido (Liquid Glass Dark Mode) */
-  --liquid-glass-bg: rgba(13, 20, 36, 0.58);
-  --liquid-glass-bg-hover: rgba(18, 28, 52, 0.72);
-  --liquid-glass-bg-elevated: rgba(18, 30, 56, 0.82);
-  --liquid-glass-bg-subtle: rgba(255, 255, 255, 0.04);
+  /* Fondo y Superficies Monocromáticas */
+  --bg-base: #030407;
+  --bg-primary: #05060a;
+  --bg-secondary: #090a0f;
+  --bg-elevated: #0e1017;
   
-  /* Óptica y Desenfoque */
-  --liquid-glass-blur: 28px;
-  --liquid-glass-saturate: 195%;
+  --surface-glass: rgba(255, 255, 255, 0.025);
+  --surface-glass-hover: rgba(255, 255, 255, 0.05);
+  --surface-glass-elevated: rgba(255, 255, 255, 0.04);
   
-  /* Borde Biselado & Reflejos Especulares de Luz */
-  --liquid-glass-border: 1px solid rgba(255, 255, 255, 0.12);
-  --liquid-glass-border-hover: 1px solid rgba(96, 165, 250, 0.35);
-  --liquid-glass-specular: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3);
-  --liquid-glass-specular-bright: 
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.65),
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3);
-    
-  /* Sombras y Profundidad Apple */
-  --liquid-glass-shadow-sm: 0 8px 24px -6px rgba(0, 0, 0, 0.5), 0 2px 6px -2px rgba(0, 0, 0, 0.3);
-  --liquid-glass-shadow-md: 0 16px 40px -8px rgba(0, 0, 0, 0.65), 0 0 25px -5px rgba(37, 99, 235, 0.18);
-  --liquid-glass-shadow-lg: 0 28px 65px -12px rgba(0, 0, 0, 0.85), 0 0 45px -8px rgba(59, 130, 246, 0.28);
+  /* Bordes Ultra Finos de Precisión */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.16);
+  --border-active: rgba(255, 255, 255, 0.25);
+  
+  /* Reflejo Especular Superior (Specular Rim de 1px) */
+  --specular-rim: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --specular-rim-bright: inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  
+  /* Sombras de Profundidad Apple */
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 16px 40px -10px rgba(0, 0, 0, 0.75);
+  --shadow-elevated: 0 24px 60px -12px rgba(0, 0, 0, 0.9);
+  
+  /* Tipografía Sobria y Neutral */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-dim: #52525b;
+  
+  /* Acento Minimalista Neutro / Plata */
+  --accent-white: #ffffff;
+  --accent-subtle: rgba(255, 255, 255, 0.1);
+  --accent-blue-restrained: #2997ff;
+
+  /* Curvas de Animación Apple */
+  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --spring-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.25);
 }
 
 /* ==========================================================================
-   1. BARRA DE NAVEGACIÓN FLOTANTE (Apple Liquid Glass Dock Style)
+   1. RESET Y BASE
    ========================================================================== */
-.site-navbar {
-  background: var(--liquid-glass-bg) !important;
-  backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) !important;
-  -webkit-backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) !important;
-  border: var(--liquid-glass-border) !important;
-  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-md) !important;
-  position: relative;
+html {
+  background-color: var(--bg-base) !important;
+  color: var(--text-primary) !important;
+  color-scheme: dark;
 }
 
-.site-navbar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.45) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  pointer-events: none;
+body {
+  background-color: var(--bg-base) !important;
+  color: var(--text-primary) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Plus Jakarta Sans", Roboto, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Eliminación de Luces Estridentes: Atmósfera Suave y Monocromática */
+.ambient-glow {
+  opacity: 0.12 !important;
+  filter: blur(140px) !important;
+}
+
+.ambient-glow-1 {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%) !important;
+  width: 500px !important;
+  height: 300px !important;
+}
+
+.ambient-glow-2, .ambient-glow-3 {
+  display: none !important; /* Cero saturación de color innecesaria */
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGACIÓN FLOTANTE (Apple Minimalism)
+   ========================================================================== */
+.site-navbar {
+  background: rgba(9, 10, 14, 0.7) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--specular-rim), var(--shadow-subtle) !important;
+  border-radius: 9999px !important;
+  padding: 0.45rem 1.1rem !important;
 }
 
 .site-navbar:hover {
-  border-color: rgba(96, 165, 250, 0.4) !important;
-  box-shadow: var(--liquid-glass-specular-bright), var(--liquid-glass-shadow-lg) !important;
+  border-color: var(--border-hover) !important;
+  box-shadow: var(--specular-rim-bright), var(--shadow-card) !important;
+}
+
+.brand {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.brand-badge {
+  background: #0f1015 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
 }
 
 .nav-link {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  border-radius: 8px;
-  padding: 4px 8px;
-}
-
-.nav-link:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff !important;
-}
-
-/* ==========================================================================
-   2. TARJETAS DE MÉTRICAS (Refractive Stat Panels)
-   ========================================================================== */
-.metric-card {
-  background: var(--liquid-glass-bg) !important;
-  backdrop-filter: blur(20px) saturate(var(--liquid-glass-saturate)) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(var(--liquid-glass-saturate)) !important;
-  border: var(--liquid-glass-border) !important;
-  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-sm) !important;
-  border-radius: 20px !important;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.metric-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.35) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  pointer-events: none;
-}
-
-.metric-card:hover {
-  background: var(--liquid-glass-bg-hover) !important;
-  border-color: rgba(96, 165, 250, 0.38) !important;
-  box-shadow: var(--liquid-glass-specular-bright), var(--liquid-glass-shadow-md) !important;
-  transform: translateY(-4px) scale(1.01) !important;
-}
-
-/* ==========================================================================
-   3. TARJETAS DE PROYECTOS (Liquid Glass Showcase)
-   ========================================================================== */
-.project-card {
-  background: var(--liquid-glass-bg) !important;
-  backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) !important;
-  -webkit-backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) !important;
-  border: var(--liquid-glass-border) !important;
-  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-md) !important;
-  border-radius: 26px !important;
-  position: relative;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.project-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 5%;
-  right: 5%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  pointer-events: none;
-  z-index: 5;
-}
-
-.project-card:hover {
-  background: var(--liquid-glass-bg-hover) !important;
-  border-color: rgba(96, 165, 250, 0.45) !important;
-  box-shadow: var(--liquid-glass-specular-bright), var(--liquid-glass-shadow-lg) !important;
-  transform: translateY(-6px) scale(1.008) !important;
-}
-
-/* Tags de Tecnologías translúcidos */
-.project-tags .tag {
-  background: rgba(255, 255, 255, 0.06) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+  font-size: 0.85rem !important;
+  padding: 6px 12px !important;
   border-radius: 9999px !important;
-  color: #e2e8f0 !important;
   transition: all 0.2s ease !important;
 }
 
-.project-tags .tag:hover {
-  background: rgba(59, 130, 246, 0.18) !important;
-  border-color: rgba(96, 165, 250, 0.4) !important;
+.nav-link:hover {
   color: #ffffff !important;
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06) !important;
 }
 
 /* ==========================================================================
-   4. BOTONES APPLE (Pill Shape & Specular Bounce)
+   3. BOTONES APPLE PRO (Alto Contraste y Calidad Táctil)
    ========================================================================== */
 .btn {
   border-radius: 9999px !important;
   font-weight: 600 !important;
   letter-spacing: -0.01em !important;
-  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-  position: relative;
-  overflow: hidden;
+  font-size: 0.875rem !important;
+  padding: 10px 20px !important;
+  transition: all 0.2s var(--ease-apple) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
 }
 
 .btn:active {
-  transform: scale(0.96) !important;
+  transform: scale(0.97) !important;
 }
 
-/* Botón Primario Liquid Glass */
+/* Botón Primario: Blanco Puro Minimalista */
 .btn-primary, .btn-nav-contact {
-  background: linear-gradient(135deg, #007aff 0%, #0056cc 100%) !important;
+  background: #ffffff !important;
+  color: #000000 !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.6),
-    0 6px 20px rgba(0, 122, 255, 0.45) !important;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15) !important;
 }
 
 .btn-primary:hover, .btn-nav-contact:hover {
-  background: linear-gradient(135deg, #1a88ff 0%, #0066ee 100%) !important;
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.75),
-    0 8px 26px rgba(0, 122, 255, 0.6) !important;
-  transform: translateY(-2px) !important;
+  background: #ececed !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) !important;
+  color: #000000 !important;
 }
 
-/* Botón Secundario Translúcido */
+.btn-primary svg, .btn-nav-contact svg {
+  stroke: #000000 !important;
+}
+
+/* Botón Secundario: Vidrio Oscuro Sutil */
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.35),
-    0 4px 14px rgba(0, 0, 0, 0.25) !important;
-  color: #f1f5f9 !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--specular-rim) !important;
+  color: var(--text-primary) !important;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.14) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.5),
-    0 6px 18px rgba(0, 0, 0, 0.35) !important;
-  transform: translateY(-2px) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--border-hover) !important;
   color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+.btn-sm {
+  padding: 6px 14px !important;
+  font-size: 0.8rem !important;
 }
 
 /* ==========================================================================
-   5. FILTROS DE PROYECTO (Apple Segmented Glass Control)
+   4. HERO & TIPOGRAFÍA
+   ========================================================================== */
+.hero-title {
+  font-size: clamp(2.4rem, 5vw + 1rem, 4.2rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.08 !important;
+  color: #ffffff !important;
+}
+
+.hero-gradient-text {
+  background: linear-gradient(180deg, #ffffff 40%, #a1a1aa 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary) !important;
+  font-size: 1.08rem !important;
+  line-height: 1.65 !important;
+  max-width: 680px !important;
+}
+
+.badge-status, .section-tag {
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 9999px !important;
+  color: var(--text-secondary) !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  padding: 5px 14px !important;
+}
+
+.status-dot {
+  background-color: #34c759 !important;
+  box-shadow: 0 0 8px rgba(52, 199, 89, 0.5) !important;
+}
+
+.hero-location {
+  color: var(--text-muted) !important;
+  font-size: 0.85rem !important;
+}
+
+/* ==========================================================================
+   5. TARJETAS DE MÉTRICAS (Refinadas & Limpias)
+   ========================================================================== */
+.metric-card {
+  background: var(--surface-glass) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--specular-rim), var(--shadow-subtle) !important;
+  border-radius: 20px !important;
+  padding: 1.75rem 1.5rem !important;
+  transition: all 0.25s var(--ease-apple) !important;
+}
+
+.metric-card:hover {
+  background: var(--surface-glass-hover) !important;
+  border-color: var(--border-hover) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: var(--specular-rim-bright), var(--shadow-card) !important;
+}
+
+.metric-card::before, .metric-card::after {
+  display: none !important; /* Cero brillos excesivos */
+}
+
+.metric-value {
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  color: #ffffff !important;
+}
+
+.metric-label {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  margin-top: 4px !important;
+}
+
+.metric-detail {
+  color: var(--text-muted) !important;
+  font-size: 0.82rem !important;
+  margin-top: 6px !important;
+  line-height: 1.5 !important;
+}
+
+/* ==========================================================================
+   6. FILTROS DE PROYECTOS (Control Segmentado Minimalista)
    ========================================================================== */
 .project-filters {
-  background: rgba(15, 23, 42, 0.5) !important;
-  backdrop-filter: blur(20px) saturate(var(--liquid-glass-saturate)) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(var(--liquid-glass-saturate)) !important;
-  border: var(--liquid-glass-border) !important;
-  padding: 5px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--border-subtle) !important;
+  padding: 4px !important;
   border-radius: 9999px !important;
   display: inline-flex !important;
-  box-shadow: var(--liquid-glass-specular), var(--liquid-glass-shadow-sm) !important;
+  gap: 4px !important;
+  box-shadow: var(--specular-rim) !important;
 }
 
 .filter-btn {
-  border-radius: 9999px !important;
-  border: none !important;
   background: transparent !important;
+  border: none !important;
   color: var(--text-secondary) !important;
-  padding: 8px 18px !important;
-  transition: all 0.25s ease !important;
+  padding: 7px 16px !important;
+  border-radius: 9999px !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
 }
 
 .filter-btn:hover {
   color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 
 .filter-btn.active {
-  background: rgba(255, 255, 255, 0.18) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
   color: #ffffff !important;
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.45),
-    0 3px 10px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 2px 8px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* ==========================================================================
-   6. CONTACT HUB & ACCIONES (Apple Glass Hero Card)
+   7. SHOWCASE DE PROYECTOS (Arquitectura Limpia)
    ========================================================================== */
-.contact-card {
-  background: linear-gradient(135deg, rgba(15, 25, 48, 0.7) 0%, rgba(10, 16, 32, 0.85) 100%) !important;
-  backdrop-filter: blur(36px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(210%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -1px 3px 0 rgba(0, 0, 0, 0.4),
-    var(--liquid-glass-shadow-lg) !important;
-  border-radius: 36px !important;
-  position: relative;
+.project-card {
+  background: var(--surface-glass) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--specular-rim), var(--shadow-card) !important;
+  border-radius: 24px !important;
+  transition: all 0.3s var(--ease-apple) !important;
 }
 
-.contact-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 15%;
-  right: 15%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  pointer-events: none;
+.project-card:hover {
+  background: var(--surface-glass-hover) !important;
+  border-color: var(--border-hover) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: var(--specular-rim-bright), var(--shadow-elevated) !important;
+}
+
+.project-card::before {
+  display: none !important;
+}
+
+.project-media {
+  background: #08090d !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+.project-badge-top {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: var(--text-secondary) !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  border-radius: 9999px !important;
+  padding: 4px 10px !important;
+}
+
+.project-title {
+  color: #ffffff !important;
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.project-role {
+  color: var(--text-muted) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+}
+
+.project-desc {
+  color: var(--text-secondary) !important;
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Viñetas sobrias */
+.project-metrics-list li {
+  color: var(--text-secondary) !important;
+  font-size: 0.86rem !important;
+}
+
+.project-metrics-list svg {
+  stroke: var(--text-muted) !important;
+}
+
+/* Tags de tecnologías neutros y elegantes */
+.project-tags .tag {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: #d4d4d8 !important;
+  font-size: 0.76rem !important;
+  font-weight: 500 !important;
+  padding: 4px 10px !important;
+  border-radius: 9999px !important;
+}
+
+.project-tags .tag:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--border-hover) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   8. ACTIVIDAD, TIMELINE, CERTIFICACIONES Y SKILLS
+   ========================================================================== */
+.activity-card, .timeline-card, .cert-card, .skill-category {
+  background: var(--surface-glass) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--specular-rim), var(--shadow-subtle) !important;
+  border-radius: 20px !important;
+  transition: all 0.25s var(--ease-apple) !important;
+}
+
+.activity-card:hover, .timeline-card:hover, .cert-card:hover, .skill-category:hover {
+  background: var(--surface-glass-hover) !important;
+  border-color: var(--border-hover) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: var(--specular-rim-bright), var(--shadow-card) !important;
+}
+
+.timeline-dot {
+  background: #ffffff !important;
+  border: 2px solid var(--bg-base) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3) !important;
+}
+
+.cert-icon, .skill-cat-icon {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: #ffffff !important;
+}
+
+.cert-icon svg, .skill-cat-icon svg {
+  stroke: #ffffff !important;
+}
+
+.skill-pill {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: #d4d4d8 !important;
+  border-radius: 9999px !important;
+  font-size: 0.8rem !important;
+  padding: 5px 12px !important;
+}
+
+.skill-pill:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   9. CONTACT HUB (Soberbio, Limpio y de Calidad)
+   ========================================================================== */
+.contact-card {
+  background: rgba(14, 16, 22, 0.8) !important;
+  backdrop-filter: blur(32px) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--specular-rim), var(--shadow-elevated) !important;
+  border-radius: 32px !important;
+  padding: 4rem 2rem !important;
+}
+
+.contact-card::before, .contact-card::after {
+  display: none !important; /* Eliminación de manchas de color estridentes */
+}
+
+.contact-title {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.contact-subtitle {
+  color: var(--text-secondary) !important;
 }
 
 .contact-info-pills .info-item {
-  background: rgba(255, 255, 255, 0.06) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--specular-rim) !important;
   border-radius: 9999px !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.2s ease !important;
 }
 
 .contact-info-pills .info-item:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: rgba(96, 165, 250, 0.4) !important;
-  transform: translateY(-2px) scale(1.02) !important;
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.4),
-    0 6px 18px rgba(0, 0, 0, 0.3) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--border-hover) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
 }
 
 /* ==========================================================================
-   7. BADGES Y PILLS (Apple Translucent Badges)
+   10. FOSTER ACCESSIBILITY (Focus Rings & Reduced Motion)
    ========================================================================== */
-.badge-status, .section-tag {
-  background: rgba(255, 255, 255, 0.06) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-  border-radius: 9999px !important;
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8) !important;
+  outline-offset: 2px !important;
 }
 
-/* ==========================================================================
-   8. MEJORA DE LUCES AMBIENTALES DE FONDO (Para refracción Liquid Glass)
-   ========================================================================== */
-.ambient-glow-1 {
-  background: radial-gradient(circle, rgba(0, 122, 255, 0.32) 0%, rgba(30, 58, 138, 0.15) 55%, transparent 75%) !important;
-}
-
-.ambient-glow-2 {
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(88, 86, 214, 0.1) 60%, transparent 75%) !important;
-}
-
-.ambient-glow-3 {
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%) !important;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
