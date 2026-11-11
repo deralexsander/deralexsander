@@ -16,8 +16,8 @@
 
 Desarrollador Full-Stack enfocado en el ciclo completo de desarrollo de software, arquitectura de APIs RESTful, integración de sistemas de pago y modelos de Machine Learning aplicados a soluciones reales.
 
-- 🎓 **Formación:** Estudiante de Ingeniería en Informática en Duoc UC.
-- 📜 **Certificaciones:** Cisco Partner: PCAP (Programming Essentials in Python) | CertiProf: DevOps Foundation (DFPCM).
+- 🎓 **Formación:** Estudiante de Ingeniería en Informática en Duoc UC | Técnico de Nivel Medio en Electrónica (Colegio Don Orione, Reg. Mineduc Nº 29219).
+- 📜 **Certificaciones & Títulos:** Título de Técnico de Nivel Medio en Electrónica (Mineduc) | Cisco Partner: PCAP (Programming Essentials in Python) | CertiProf: DevOps Foundation (DFPC™) & DevOps Essentials (DEPC®).
 - 🏆 **Distinciones:** 1.° Lugar Regional en Competencia de Robótica MakeX (navegación autónoma).
 
 ---

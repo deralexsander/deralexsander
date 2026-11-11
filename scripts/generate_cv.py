@@ -120,10 +120,10 @@ def draw_header(ctx, y):
 
     # Headline
     ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
-    ctx.set_font_size(10.0)
+    ctx.set_font_size(9.8)
     ctx.set_source_rgb(0.18, 0.24, 0.35)
     ctx.move_to(MARGIN_L, y)
-    ctx.show_text('Desarrollador Full-Stack | Egresando de Ingeniería en Informática')
+    ctx.show_text('Desarrollador Full-Stack | Egresando de Ingeniería en Informática | Técnico en Electrónica')
     y += 12.5
 
     # Contact Bar - 2 balanced lines with clickable tags
@@ -247,12 +247,11 @@ def generate_pdf(output_path):
     # 1. PERFIL PROFESIONAL
     y = draw_section_title(ctx, y, 'PERFIL PROFESIONAL')
     profile_text = (
-        'Desarrollador Full-Stack enfocado en arquitectura de software, APIs RESTful escalables e integración '
-        'de Machine Learning aplicado. Experiencia comprobada en despliegue de soluciones SaaS en producción '
-        '(Railway, Cloudflare), bases de datos PostgreSQL optimizadas (+60.000 registros indexados) y desarrollo '
-        'frontend reactivo (HTMX, TypeScript, Angular). Trabajo colaborativo bajo marco ágil Scrum, doble certificación '
-        'internacional en DevOps (CertiProf DFPC™/DEPC®), certificación en Python (Cisco PCAP) y 1.er lugar regional '
-        'en robótica competitiva y algorítmica.'
+        'Desarrollador Full-Stack con base técnica en electrónica, enfocado en arquitectura de software, APIs '
+        'RESTful escalables e integración de Machine Learning aplicado. Experiencia en despliegue de plataformas '
+        'SaaS en producción (Railway, Cloudflare), PostgreSQL optimizado (+60.000 registros) y desarrollo frontend '
+        'reactivo (HTMX, TypeScript, Angular). Metodología Scrum, doble certificación internacional en DevOps '
+        '(CertiProf DFPC™/DEPC®), certificación en Python (Cisco PCAP) y 1.er lugar regional en robótica competitiva.'
     )
     ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
     ctx.set_font_size(8.2)
@@ -342,8 +341,10 @@ def generate_pdf(output_path):
         y += 0.8
     y += 3.5
 
-    # 4. EDUCACIÓN SUPERIOR
-    y = draw_section_title(ctx, y, 'EDUCACIÓN SUPERIOR')
+    # 4. EDUCACIÓN Y FORMACIÓN TÉCNICA
+    y = draw_section_title(ctx, y, 'EDUCACIÓN Y FORMACIÓN TÉCNICA')
+    
+    # 4.1 Duoc UC
     ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
     ctx.set_font_size(9.1)
     ctx.set_source_rgb(0.06, 0.09, 0.16)
@@ -356,16 +357,50 @@ def generate_pdf(output_path):
     date_w = ctx.text_extents('2023 – 2026').x_advance
     ctx.move_to(MARGIN_R - date_w, y)
     ctx.show_text('2023 – 2026')
-    y += 10.0
+    y += 9.5
 
     ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
     ctx.set_font_size(8.0)
     ctx.set_source_rgb(0.25, 0.3, 0.38)
     ctx.move_to(MARGIN_L, y)
     ctx.show_text('Carrera: Ingeniería en Informática (Egresando / Cursando último año)')
-    y += 10.5
+    y += 10.0
 
-    y = draw_bullet(ctx, MARGIN_L, y, 'Formación Especializada:', 'Enfoque práctico en ingeniería de software, arquitectura de sistemas, bases de datos relacionales y NoSQL, desarrollo full-stack, DevOps y gestión ágil de proyectos.', USABLE_W, line_h=10.6, font_size=8.0)
+    y = draw_bullet(ctx, MARGIN_L, y, 'Formación Especializada:', 'Enfoque práctico en ingeniería de software, arquitectura de sistemas, bases de datos relacionales y NoSQL, desarrollo full-stack, DevOps y gestión ágil.', USABLE_W, line_h=10.4, font_size=8.0)
+    y += 3.5
+
+    # 4.2 Colegio Don Orione - Técnico en Electrónica
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    ctx.set_font_size(9.1)
+    ctx.set_source_rgb(0.06, 0.09, 0.16)
+    ctx.move_to(MARGIN_L, y)
+    ctx.show_text('Colegio Don Orione – Quintero')
+    
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+    ctx.set_font_size(8.0)
+    ctx.set_source_rgb(0.4, 0.46, 0.54)
+    date_w = ctx.text_extents('Titulado (2022)').x_advance
+    ctx.move_to(MARGIN_R - date_w, y)
+    ctx.show_text('Titulado (2022)')
+    y += 9.5
+
+    ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+    ctx.set_font_size(8.0)
+    ctx.set_source_rgb(0.25, 0.3, 0.38)
+    ctx.move_to(MARGIN_L, y)
+    titulo_label = 'Título: Técnico de Nivel Medio en Electrónica (Reg. Mineduc / SECREDUC Nº 29219)'
+    ctx.show_text(titulo_label)
+    label_w = ctx.text_extents(titulo_label + ' ').x_advance
+    
+    # Clickable link to official certificate PDF
+    ctx.set_source_rgb(0.1, 0.35, 0.75)
+    ctx.move_to(MARGIN_L + label_w, y)
+    ctx.tag_begin(cairo.TAG_LINK, "uri='https://deralexsander.github.io/deralexsander/assets/certificates/tecnico-nivel-medio-electronica.pdf'")
+    ctx.show_text('[Ver Certificado Oficial PDF]')
+    ctx.tag_end(cairo.TAG_LINK)
+    y += 10.0
+
+    y = draw_bullet(ctx, MARGIN_L, y, 'Especialidad Técnica:', 'Fundamentos sólidos en circuitos análogos/digitales, microcontroladores, instrumentación, diagnóstico de fallas y soporte integral de hardware electrónico.', USABLE_W, line_h=10.4, font_size=8.0)
     y += 4.5
 
     # 5. CERTIFICACIONES INTERNACIONALES Y DISTINCIONES

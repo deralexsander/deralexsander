@@ -36,12 +36,18 @@ Capacidad comprobada en:
   Carrera: Ingeniería en Informática
   Estado: Cursando último año / Egresando
 
-• Colegio Don Orione
-  Especialidad: Técnico en Electrónica
+• Colegio Don Orione (Quintero, Valparaíso)
+  Título: Técnico de Nivel Medio en Electrónica
+  Registro Oficial: SECREDUC Reg. Nº 29219 (04/07/2022) | Mineduc
 
 
-4. CERTIFICACIONES INTERNACIONALES Y DISTINCIONES
+4. CERTIFICACIONES, TÍTULOS Y DISTINCIONES
 --------------------------------------------------------------------------------
+• Título de Técnico de Nivel Medio en Electrónica
+  - Emisor: Ministerio de Educación (Mineduc) & Colegio Don Orione
+  - Registro: SECREDUC Reg. Nº 29219 (04/07/2022)
+  - Enfoque: Circuitos electrónicos análogos y digitales, microcontroladores, instrumentación y hardware.
+
 • Cisco Partner: PCAP – Programming Essentials in Python
   - Emisor: Cisco Networking Academy & Python Institute
   - Fecha: Julio 2023

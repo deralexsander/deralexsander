@@ -31,6 +31,7 @@ sus límites arquitectónicos.
 [C] Herramientas de Conversión para Reclutadores Técnicos
     • Descarga inmediata en un solo clic del Currículum Vitae en PDF.
     • Visualizador y enlaces directos a los PDFs originales de certificados oficiales:
+      - Título de Técnico de Nivel Medio en Electrónica (Colegio Don Orione / Mineduc Reg. 29219)
       - Cisco Partner: PCAP (Python Essentials)
       - CertiProf: DevOps Foundation (DFPC™)
       - CertiProf: DevOps Essentials (DEPC®)
