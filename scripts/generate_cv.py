@@ -289,14 +289,14 @@ def generate_pdf(output_path):
             ]
         },
         {
-            'title': 'Notes & Sillage – E-Commerce y Catálogo Digital de Fragancias',
+            'title': 'Notes & Sillage – E-Commerce Serverless & Catálogo de Fragancias',
             'date': '2024 – 2025',
-            'sub_prefix': 'Rol: Fundador & Desarrollador Web | Emprendimiento Propio en Producción | ',
-            'link_text': 'notes.cl (Demo en Vivo)',
-            'link_url': 'https://deralexsander.github.io/notes-and-sillage/',
+            'sub_prefix': 'Rol: Fundador & Desarrollador Full-Stack | notes.cl | ',
+            'link_text': 'Demo notes.cl',
+            'link_url': 'https://notes.cl/',
             'bullets': [
-                ('Catálogo Interactivo & Ventas:', 'Desarrollé plataforma web mobile-first con buscador reactivo por familias olfativas y generador dinámico de checkout estructurado hacia la API de WhatsApp.'),
-                ('Alta Disponibilidad:', 'Arquitectura estática en GitHub Pages con proxy perimetral Cloudflare (DNS, caché global y SSL estricto), alcanzando 100% de disponibilidad con costo cero.')
+                ('Evolución Serverless & Cloud:', 'Evolucioné el catálogo estático a arquitectura Serverless con Cloud Firestore (GCP) para persistencia transaccional de pedidos, reglas NoSQL y notificaciones push inmediatas (ntfy).'),
+                ('Tracción & Nuevo Cliente D&G:', 'Infraestructura Cloudflare SSL/DNS con 100% uptime y costo cero; la tracción comercial generó el encargo directo del catálogo D & G Parfums (deralexsander.github.io/d-and-g-parfums).')
             ]
         },
         {
@@ -317,7 +317,7 @@ def generate_pdf(output_path):
             'link_text': 'deralexsander.github.io/GMConstructora',
             'link_url': 'https://deralexsander.github.io/GMConstructora/',
             'bullets': [
-                ('Consultoría & Despliegue:', 'Levantamiento de requerimientos de negocio, diseño UI/UX mobile-first de alta conversión, asesoría técnica en adquisición de dominios, DNS y despliegue a producción.')
+                ('Consultoría & Catálogo de Obras:', 'Levantamiento de requerimientos, diseño UI/UX mobile-first de catálogo de servicios/obras reales para alta conversión, gestión de dominio/DNS y despliegue a producción.')
             ]
         }
     ]

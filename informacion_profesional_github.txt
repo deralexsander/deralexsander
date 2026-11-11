@@ -111,24 +111,42 @@ Capacidad comprobada en:
       - Configuración de hosting, certificados SSL/TLS y cuentas de correo corporativas.
       - Entrega y capacitación para la actualización de contenidos del cliente.
 
-[3] Notes & Sillage — Catálogo Digital de Perfumes & Comercio Rápido
+[3] Notes & Sillage — E-Commerce Serverless & Catálogo de Fragancias
     ----------------------------------------------------------------------------
-    • Tipo: Emprendimiento Propio & Catálogo Web en Producción
+    • Tipo: Emprendimiento Propio & Plataforma Serverless en Producción
+    • Dominio Oficial: https://notes.cl
     • Repositorio: https://github.com/deralexsander/notes-and-sillage
-    • Demo en Vivo: https://deralexsander.github.io/notes-and-sillage/
-    • Stack Tecnológico: JavaScript ES6+, HTML5 semántico, CSS3 Vanilla avanzado,
-      GitHub Pages, Lucide Icons, WhatsApp Business API.
-    • Descripción:
-      Catálogo digital e interactivo creado para optimizar el canal de ventas del
-      emprendimiento propio de fragancias en Chile, reemplazando listas estáticas de chat
-      por una experiencia fluida tipo e-commerce.
+    • Stack Tecnológico: JavaScript ES6+, Cloud Firestore (GCP), NoSQL Rules, Webhooks ntfy,
+      HTML5 semántico, CSS3 Modular, Cloudflare (DNS/SSL), GitHub Pages.
+    • Evolución Arquitectónica (Antes vs. Ahora):
+      - Inicial: Catálogo JAMstack con carrito en memoria y checkout a WhatsApp.
+      - Escalado: Ante la alta demanda de pedidos, se rediseñó integrando persistencia transaccional
+        en Cloud Firestore con estados (Pendiente, Pagado, Confirmado), reglas NoSQL de seguridad,
+        despacho automático de notificaciones push en tiempo real a ntfy directo al móvil del
+        vendedor y dashboards internos de control de compras y lotes.
     • Métricas y Logros Técnicos Clave:
-      - Buscador inteligente en tiempo real por nombre, código de fragancia o aroma.
-      - Mapeo interactivo de familias olfativas (cítrico, maderoso, oriental, etc.).
-      - Constructor de pedidos dinámico que formatea y envía el carrito listo a WhatsApp.
-      - Despliegue automatizado en GitHub Pages con 100% de disponibilidad y cero costo de servidor.
+      - Persistencia asíncrona NoSQL con detección de conectividad y fallback offline.
+      - Notificaciones push al móvil en tiempo real ante cada orden confirmada.
+      - Despliegue en dominio propio notes.cl con Cloudflare y 100% de disponibilidad sin costo de servidor.
 
-[4] FerreMas — E-commerce y Plataforma de Gestión Logística Omnicanal
+[4] D & G Parfums — Catálogo Digital Luxury para Punto de Venta
+    ----------------------------------------------------------------------------
+    • Tipo: Cliente Real / Encargo Comercial Derivado de Notes & Sillage
+    • Demo en Vivo (GitHub Pages): https://deralexsander.github.io/d-and-g-parfums/
+    • Repositorio: https://github.com/deralexsander/d-and-g-parfums
+    • Rol: Desarrollador Frontend Freelance & Diseñador UI/UX
+    • Stack Tecnológico: JavaScript ES6+, HTML5 semántico, CSS3 Luxury Design System, GitHub Pages.
+    • Alcance del Proyecto:
+      Encargo directo derivado de la óptima experiencia de usuario demostrada en Notes & Sillage.
+      Maison D & G Parfums solicitó una plataforma a medida orientada a servir como expositor
+      digital de consulta rápida en salas de venta física.
+    • Métricas y Logros Técnicos Clave:
+      - Búsqueda predictiva con tolerancia a errores tipográficos por código corto (H-13, F-01), nombre o aroma.
+      - Mapa olfativo interactivo en 4 cuadrantes de intensidad para guiar la consulta de clientes.
+      - Alternancia táctil entre presentación de frasco e inspiración visual del aroma.
+      - Carga ultra veloz (<1s) y cero costo de servidor alojado en GitHub Pages.
+
+[5] FerreMas — E-commerce y Plataforma de Gestión Logística Omnicanal
     ----------------------------------------------------------------------------
     • Tipo: Proyecto Académico Integrador / E-commerce Empresarial
     • Periodo: Abril 2025 – Junio 2025
@@ -145,7 +163,7 @@ Capacidad comprobada en:
       - Integración de Google Maps API para cálculo dinámico de despachos y geolocalización
         de sucursales entre Santiago y regiones (Valparaíso, Biobío, Los Lagos).
 
-[5] Servicio CATTECH — Plataforma de Integración y Pasarela Financiera
+[6] Servicio CATTECH — Plataforma de Integración y Pasarela Financiera
     ----------------------------------------------------------------------------
     • Tipo: Proyecto Integrador / Arquitectura de Servicios Móvil y Web
     • Periodo: Agosto 2024 – Noviembre 2024
@@ -160,7 +178,7 @@ Capacidad comprobada en:
         y reglas de seguridad NoSQL granulares.
       - Despliegue híbrido para web y empaquetado móvil con Capacitor.
 
-[6] NekoBeansWeb — Sistema Administrativo y Tienda Online para PYME
+[7] NekoBeansWeb — Sistema Administrativo y Tienda Online para PYME
     ----------------------------------------------------------------------------
     • Tipo: Tienda Online & Gestión Comercial
     • Periodo: Abril 2023 – Julio 2023

@@ -8,7 +8,7 @@
 
 > 🚀 **Visita mi Portafolio Web Interactivo:**  
 > 👉 **[https://deralexsander.github.io/deralexsander/](https://deralexsander.github.io/deralexsander/)**  
-> *Métricas en producción, proyectos activos en línea (SmartBids, Notes & Sillage, G&M Constructora), certificados oficiales en PDF y descarga de CV.*
+> *Métricas en producción, proyectos activos en línea (SmartBids, Notes & Sillage, G&M Constructora, D & G Parfums), certificados oficiales en PDF y descarga de CV.*
 
 ---
 
@@ -47,17 +47,25 @@ Desarrollador Full-Stack enfocado en el ciclo completo de desarrollo de software
   * Hardening de seguridad: Implementación de autenticación de dos factores (2FA / OTP con hash salted), protección contra fuerza bruta y sanitización en cliente/servidor.
 * **Stack:** Python, Django, PostgreSQL, Firebase Auth / Firestore, Scikit-Learn, Railway.
 
-#### 🔹 [Notes & Sillage — Catálogo Digital de Perfumería](https://notes.cl/)
-> **Solución e-commerce ligera y catálogo interactivo en producción bajo dominio propio ([notes.cl](https://notes.cl/)).**
-* **Rol:** Creador & Desarrollador Principal.
+#### 🔹 [Notes & Sillage — E-Commerce Serverless & Catálogo de Fragancias](https://notes.cl/)
+> **Solución e-commerce y catálogo en producción bajo dominio propio ([notes.cl](https://notes.cl/)).**
+* **Rol:** Creador & Desarrollador Full-Stack.
+* **Evolución Arquitectónica (Antes vs. Ahora):**
+  * *Inicial:* MVP estático JAMstack con checkout directo por chat de WhatsApp.
+  * *Escalamiento Serverless:* Ante el alto volumen de pedidos, se rediseñó integrando **Cloud Firestore (GCP)** para persistencia de órdenes con estados (Pendiente, Pagado, Confirmado), reglas de seguridad NoSQL granulares, **notificaciones push automáticas al móvil (ntfy)** y dashboards internos de control.
 * **Infraestructura Cloud & Redes:**
   * Adquisición y configuración de dominio propio `notes.cl`.
   * Integración con **Cloudflare**: Gestión de registros DNS, proxy perimetral de caché, cifrado estricto SSL/TLS y protección perimetral.
   * Despliegue continuo (CI/CD) automatizado en **GitHub Pages** mediante registro CNAME.
+
+#### 🔹 [D & G Parfums — Catálogo Luxury en Punto de Venta](https://deralexsander.github.io/d-and-g-parfums/)
+> **Expositor y catálogo digital de alta velocidad para consulta en sala de ventas.**
+* **Rol:** Desarrollador Frontend Freelance (Encargo comercial derivado de la tracción de Notes & Sillage).
 * **Aportes Clave:**
-  * Desarrollo frontend mobile-first (JAMstack puro: HTML5, CSS3, JavaScript modular) sin dependencia de servidores ni base de datos externa.
-  * Buscador predictivo con tolerancia a errores tipográficos y mapa olfativo interactivo por familias y género.
-  * Generación y formateo de pedidos directos a WhatsApp para conversión comercial inmediata.
+  * Diseño luxury mobile-first adaptado a la identidad corporativa de la maison (paleta refinada marfil/carbón).
+  * Buscador predictivo en tiempo real tolerante a erratas por código corto (`H-13`, `F-01`) y notas aromáticas.
+  * Brújula olfativa interactiva de 4 cuadrantes para guiar la consulta y elección de clientes en mostrador.
+  * Despliegue estático JAMstack de carga ultrarrápida y costo cero en GitHub Pages.
 
 ---
 

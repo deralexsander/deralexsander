@@ -6,12 +6,12 @@
   <title>Nicolás Alexsander Muñoz Méndez — Desarrollador Full-Stack | catstudio.cl</title>
   
   <!-- SEO & Open Graph -->
-  <meta name="description" content="Portafolio profesional de Nicolás Alexsander Muñoz Méndez (catstudio.cl). Desarrollador Full-Stack enfocado en SaaS, APIs RESTful, pasarelas de pago, Machine Learning y diseño minimalista estilo Apple.">
-  <meta name="keywords" content="Nicolás Muñoz Méndez, Desarrollador Full-Stack, Software Engineer, Python, Django, PostgreSQL, HTMX, Machine Learning, Valparaíso, Chile, catstudio.cl">
+  <meta name="description" content="Portafolio profesional de Nicolás Alexsander Muñoz Méndez (catstudio.cl). Desarrollador Full-Stack enfocado en SaaS, APIs RESTful, Cloud Firestore, pasarelas de pago, Machine Learning y diseño minimalista estilo Apple.">
+  <meta name="keywords" content="Nicolás Muñoz Méndez, Desarrollador Full-Stack, Software Engineer, Python, Django, PostgreSQL, Cloud Firestore, HTMX, Machine Learning, Valparaíso, Chile, catstudio.cl">
   <meta name="author" content="Nicolás Alexsander Muñoz Méndez">
   
   <meta property="og:title" content="Nicolás Muñoz Méndez — Desarrollador Full-Stack">
-  <meta property="og:description" content="Portafolio de ingeniería de software: SmartBids, Notes & Sillage, GYM Constructora, FerreMas y certificaciones internacionales.">
+  <meta property="og:description" content="Portafolio de ingeniería de software: SmartBids, Notes & Sillage, G&M Constructora, D&G Parfums, FerreMas y certificaciones internacionales.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://deralexsander.github.io/deralexsander/">
   
@@ -128,9 +128,9 @@
           </div>
 
           <div class="metric-card reveal" title="Proyectos desplegados y accesibles públicamente en internet">
-            <div class="metric-value" id="liveProjectsCounter">3</div>
+            <div class="metric-value" id="liveProjectsCounter">4</div>
             <div class="metric-label">Proyectos Activos en Línea</div>
-            <div class="metric-detail">SmartBids (smartbids.cl), Notes & Sillage y G&M</div>
+            <div class="metric-detail">SmartBids (smartbids.cl), Notes & Sillage, G&M y D&G Parfums</div>
           </div>
 
           <div class="metric-card reveal">
@@ -168,7 +168,7 @@
 
         <!-- Filtros de categoría interactivos -->
         <div class="project-filters reveal">
-          <button class="filter-btn active" data-filter="all">Todos los Trabajos (6)</button>
+          <button class="filter-btn active" data-filter="all">Todos los Trabajos (7)</button>
           <button class="filter-btn" data-filter="saas">SaaS & Full-Stack</button>
           <button class="filter-btn" data-filter="ecommerce">E-commerce & Clientes</button>
           <button class="filter-btn" data-filter="mobile">Móvil & Arquitectura</button>
@@ -285,57 +285,121 @@
             </div>
           </article>
 
-          <!-- 3. Notes & Sillage (PROYECTO PROPIO EN PRODUCCIÓN) -->
-          <article class="project-card reveal" data-category="ecommerce all">
+          <!-- 3. Notes & Sillage (PROYECTO PROPIO EN PRODUCCIÓN - EVOLUCIÓN SERVERLESS) -->
+          <article class="project-card reveal" data-category="ecommerce saas all">
             <div class="project-media">
-              <span class="project-badge-top">Emprendimiento Propio • En Vivo</span>
+              <span class="project-badge-top">Evolución Serverless • notes.cl</span>
               <img src="assets/img/notes-and-sillage-logo.webp" alt="Notes & Sillage" class="project-logo-img" style="border-radius: 14px;" loading="lazy" decoding="async">
             </div>
             <div class="project-content">
               <div class="project-title-row">
                 <h3 class="project-title">Notes & Sillage <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">(notes.cl)</span></h3>
-                <span class="project-role">Fundador & Desarrollador Web</span>
+                <span class="project-role">Fundador & Full-Stack</span>
               </div>
               <p class="project-desc">
-                Catálogo digital interactivo para venta de fragancias en Chile (<strong>notes.cl</strong>). Resuelve la fricción en ventas por chat permitiendo explorar aromas, familias olfativas y generar pedidos directos a WhatsApp.
+                Solución e-commerce y catálogo en producción (<strong>notes.cl</strong>). Nació para eliminar la fricción de ventas por chat y <strong>evolucionó a arquitectura Serverless con Cloud Firestore</strong> ante el alto crecimiento de demanda operativa.
               </p>
+
+              <!-- Comparativa arquitectónica: Antes vs. Ahora -->
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.82rem; line-height: 1.5;">
+                <div style="color: var(--text-secondary); margin-bottom: 0.35rem;">
+                  <strong style="color: #94a3b8;">Arquitectura Inicial:</strong> Catálogo estático JAMstack, carrito en memoria local y checkout preformateado a WhatsApp (<code>wa.me</code>).
+                </div>
+                <div style="color: var(--text-primary);">
+                  <strong style="color: #60a5fa;">Evolución Escalable (Ahora):</strong> Persistencia transaccional en <strong>Cloud Firestore</strong> (colección <code>ventas</code> y <code>pedidos</code> con estados), reglas NoSQL granulares, <strong>notificaciones push instantáneas (ntfy)</strong> al móvil y dashboards de control de compras y ventas.
+                </div>
+              </div>
 
               <ul class="project-metrics-list">
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Buscador reactivo instantáneo por nombre, código y familia olfativa.</span>
+                  <span><strong>Cloud Firestore NoSQL:</strong> Registro asíncrono con control de conectividad (offline fallback) y estados (Pendiente, Pagado, Confirmado).</span>
                 </li>
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Constructor de pedidos dinámico que automatiza el checkout a la API de WhatsApp.</span>
+                  <span><strong>Alertas Push en Tiempo Real:</strong> Webhook directo a ntfy para alertar inmediatamente al celular con cada nueva compra.</span>
                 </li>
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Despliegue automatizado y costo cero de mantenimiento en <strong>GitHub Pages</strong>.</span>
+                  <span><strong>Infraestructura Cloud:</strong> Dominio notes.cl, Cloudflare (proxy DNS, caché global, SSL estricto) y GitHub Pages.</span>
                 </li>
               </ul>
 
               <div class="project-tags">
+                <span class="tag">Cloud Firestore</span>
+                <span class="tag">Push ntfy</span>
+                <span class="tag">Cloudflare</span>
                 <span class="tag">JavaScript ES6+</span>
                 <span class="tag">GitHub Pages</span>
-                <span class="tag">CSS3 Avanzado</span>
-                <span class="tag">WhatsApp API</span>
-                <span class="tag">UX Móvil</span>
+                <span class="tag">NoSQL Rules</span>
               </div>
 
               <div class="project-actions">
-                <a href="https://deralexsander.github.io/notes-and-sillage/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <a href="https://notes.cl/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
                   <span>Demo en Vivo (notes.cl)</span>
                 </a>
                 <a href="https://github.com/deralexsander/notes-and-sillage" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                   <span>Código</span>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- 4. FerreMas (PROYECTO INTEGRAL) -->
+          <!-- 4. D & G Parfums (CLIENTE REAL - CATÁLOGO LUXURY EN PUNTO DE VENTA) -->
+          <article class="project-card reveal" data-category="ecommerce all">
+            <div class="project-media">
+              <span class="project-badge-top">Cliente Real • En Vivo</span>
+              <img src="assets/img/dgparfums-logo.webp" alt="D & G Parfums" class="project-logo-img" style="border-radius: 14px; max-height: 155px; object-fit: contain; padding: 10px; background: rgba(0,0,0,0.3);" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <div class="project-title-row">
+                <h3 class="project-title">D & G Parfums</h3>
+                <span class="project-role">Desarrollador Frontend Freelance</span>
+              </div>
+              <p class="project-desc">
+                Encargo comercial directo derivado del éxito de <em>Notes & Sillage</em>. Diseñado para <strong>Maison D & G Parfums</strong> como un <strong>expositor digital de consulta rápida en sala de venta</strong>: sin fricción de carritos ni pasarelas lentas, enfocado en consulta inmediata de notas, precios estándar y mapa olfativo.
+              </p>
+
+              <ul class="project-metrics-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Búsqueda predictiva tolerante a erratas:</strong> Consulta instantánea por código (ej. <code>H-13</code>, <code>F-01</code>), nombre o notas aromáticas.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Mapa Olfativo de 4 Cuadrantes:</strong> Brújula interactiva que clasifica fragancias por intensidad y frescura para guiar al cliente en el mostrador.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Diseño Luxury Mobile-First:</strong> Alternancia táctil frasco/aroma, paleta editorial refinada y cero costo de servidor en GitHub Pages.</span>
+                </li>
+              </ul>
+
+              <div class="project-tags">
+                <span class="tag">Cliente Real</span>
+                <span class="tag">UI/UX Luxury</span>
+                <span class="tag">Buscador Predictivo</span>
+                <span class="tag">JavaScript ES6+</span>
+                <span class="tag">GitHub Pages</span>
+                <span class="tag">JAMstack</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://deralexsander.github.io/d-and-g-parfums/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span>Demo en Vivo (D & G Parfums)</span>
+                </a>
+                <a href="https://github.com/deralexsander/d-and-g-parfums" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>Código</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. FerreMas (PROYECTO INTEGRAL) -->
           <article class="project-card reveal" data-category="mobile ecommerce all">
             <div class="project-media">
               <span class="project-badge-top">E-commerce Omnicanal</span>
@@ -382,7 +446,7 @@
             </div>
           </article>
 
-          <!-- 5. Servicio CATTECH (APP MÓVIL SERVICIOS PYME) -->
+          <!-- 6. Servicio CATTECH (APP MÓVIL SERVICIOS PYME) -->
           <article class="project-card reveal" data-category="mobile saas all">
             <div class="project-media">
               <span class="project-badge-top">App Móvil • Gestión PYME</span>
@@ -432,7 +496,7 @@
             </div>
           </article>
 
-          <!-- 6. NekoBeans (SISTEMA COMERCIAL PYME) -->
+          <!-- 7. NekoBeans (SISTEMA COMERCIAL PYME) -->
           <article class="project-card reveal" data-category="ecommerce saas all">
             <div class="project-media">
               <span class="project-badge-top">E-commerce PYME • Gestión</span>
@@ -683,23 +747,24 @@
             </div>
           </div>
 
-          <!-- 4. NekoBeans & Primeros Proyectos -->
+          <!-- 4. Notes & Sillage, D&G Parfums y NekoBeans -->
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
               <div class="timeline-header">
                 <div>
-                  <h3 class="timeline-role">Desarrollador Full-Stack</h3>
-                  <span class="timeline-company">NekoBeans & Notes and Sillage</span>
+                  <h3 class="timeline-role">Desarrollador Web & Soluciones Comerciales</h3>
+                  <span class="timeline-company">Notes & Sillage, D & G Parfums y NekoBeans</span>
                 </div>
                 <span class="timeline-date">2023 — Presente</span>
               </div>
               <p class="timeline-body">
-                Desarrollo continuo de plataformas comerciales para emprendimientos, digitalización de ventas y catálogos en vivo.
+                Desarrollo continuo de plataformas comerciales para marcas y emprendimientos reales, evolucionando desde catálogos ágiles hasta sistemas Serverless con persistencia y notificaciones en tiempo real.
               </p>
               <ul class="timeline-bullets">
-                <li>Construcción de catálogo digital interactivo en GitHub Pages para Notes & Sillage con checkout automatizado hacia WhatsApp.</li>
-                <li>Modelado transaccional relacional con Django y PostgreSQL para ventas y cotizaciones de PYME.</li>
+                <li><strong>Evolución Serverless en Notes & Sillage:</strong> Escalamiento con Cloud Firestore (GCP), persistencia de órdenes con estados, reglas NoSQL y notificaciones push instantáneas (ntfy).</li>
+                <li><strong>Desarrollo de D & G Parfums:</strong> Encargo directo derivado del éxito de Notes & Sillage; catálogo luxury para consulta rápida en punto de venta con búsqueda predictiva por códigos y mapa olfativo.</li>
+                <li><strong>Comercio PYME con NekoBeans:</strong> Digitalización comercial con Django y base relacional para gestión de inventario y pedidos de artesanías.</li>
               </ul>
             </div>
           </div>
