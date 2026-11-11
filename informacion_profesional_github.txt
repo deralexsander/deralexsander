@@ -74,25 +74,26 @@ Capacidad comprobada en:
 
 [1] SmartBids — SaaS de Inteligencia Comercial y Licitaciones Públicas
     ----------------------------------------------------------------------------
-    • Tipo: Proyecto Capstone / SaaS en Producción
+    • Tipo: Proyecto Capstone / SaaS en Producción (Cliente Real)
+    • Rol: Encargado de Creación, Seguridad y Levantamiento en Línea
     • Periodo: Agosto 2025 – Diciembre 2025
     • URL en Producción: https://smartbids.cl
     • Repositorio: https://github.com/deralexsander/SmartBids
-    • Stack Tecnológico: Python, Django, Django REST Framework, PostgreSQL, HTMX,
-      Scikit-Learn, XGBoost, Railway, Docker, HTML5, CSS3.
+    • Stack Tecnológico: HTMX, HTML5 semántico, CSS3 modular, Railway, DNS/SSL,
+      Gmail API REST, HMAC, Python, Django, PostgreSQL.
     • Descripción:
-      Plataforma integral diseñada para MiPyMEs que automatiza la búsqueda,
-      clasificación y análisis predictivo de oportunidades de negocio en el portal de
-      Mercado Público chileno.
-    • Métricas y Logros Técnicos Clave:
-      - Reducción del 75% en el tiempo invertido por empresas en buscar licitaciones afines.
-      - Base de datos en PostgreSQL con más de 60.000 registros indexados y optimizados
-        para consultas de alta concurrencia.
-      - Modelos predictivos entrenados con Scikit-Learn y XGBoost alcanzando un 82% de
-        F1-score en la predicción de adjudicaciones a partir de datos históricos.
-      - Interfaz altamente reactiva mediante HTMX, eliminando la sobrecarga de SPAs pesadas
-        y manteniendo una carga ultra veloz.
-      - Despliegue en entorno de producción utilizando Railway.
+      Plataforma SaaS diseñada para MiPyMEs que automatiza la búsqueda, clasificación
+      y monitoreo de oportunidades de negocio en el portal de Mercado Público chileno.
+    • Responsabilidades y Aportes Clave:
+      - Creación & UI/UX: Diseño y desarrollo integral de la interfaz responsiva y accesible
+        utilizando HTML5, CSS3 modular y HTMX, logrando una interacción ultrarrápida sin
+        la sobrecarga de SPAs complejas.
+      - Seguridad & Hardening: Implementación de autenticación multi-factor (2FA / OTP
+        transaccional vía Gmail API REST), control de sesiones seguras mediante tokens y
+        firmas criptográficas HMAC.
+      - Levantamiento en Línea: Despliegue de la infraestructura cloud en Railway, gestión
+        del dominio corporativo (smartbids.cl), configuración de registros DNS y aprovisionamiento
+        de certificados SSL/TLS estricto.
 
 [2] G&M Constructora (Godoy & Méndez SpA) — Sitio Corporativo y Gestión Digital Integral
     ----------------------------------------------------------------------------

@@ -268,13 +268,13 @@ def generate_pdf(output_path):
         {
             'title': 'SmartBids – SaaS de Inteligencia Comercial y Licitaciones Públicas',
             'date': 'Ago 2025 – Dic 2025',
-            'sub_prefix': 'Rol: Desarrollador Full-Stack (Backend, Cloud & Seguridad) | SaaS en Producción | ',
+            'sub_prefix': 'Rol: Encargado de Creación, Seguridad y Levantamiento en Línea | SaaS en Producción | ',
             'link_text': 'smartbids.cl',
             'link_url': 'https://smartbids.cl',
             'bullets': [
-                ('Backend & Optimización:', 'Diseñé la arquitectura en Django REST y modelo relacional en PostgreSQL con +60.000 licitaciones indexadas, reduciendo en un 75% el tiempo de búsqueda para MiPyMEs.'),
-                ('Machine Learning & UI:', 'Entrené modelos predictivos con Scikit-Learn y XGBoost (82% F1-score) en adjudicaciones públicas e implementé interfaz ultrarrápida con HTMX sin sobrecarga de SPA.'),
-                ('Cloud & Seguridad:', 'Despliegue en Railway con dominio corporativo y SSL/TLS estricto; implementé autenticación 2FA/OTP con Gmail API REST y control de sesiones con firmas HMAC.')
+                ('Creación & UI/UX:', 'Diseñé y desarrollé la interfaz responsiva y accesible con HTML5, CSS3 y HTMX para búsqueda rápida y monitoreo en tiempo real.'),
+                ('Seguridad & Hardening:', 'Implementé autenticación multi-factor (2FA/OTP vía Gmail API REST), control de sesiones seguras con firmas HMAC y endpoints protegidos.'),
+                ('Levantamiento en Línea:', 'Gestioné el despliegue a producción en Railway, configuración de DNS corporativo (smartbids.cl) y aprovisionamiento SSL/TLS estricto.')
             ]
         },
         {

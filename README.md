@@ -39,13 +39,13 @@ Desarrollador Full-Stack enfocado en el ciclo completo de desarrollo de software
 
 #### 🔹 [SmartBids — Inteligencia para Ofertar](https://github.com/deralexsander/SmartBids)
 > **Plataforma SaaS de analítica predictiva y Machine Learning para compras públicas (Mercado Público / ChileCompra).**
-* **Rol:** Team Developer — Arquitectura Frontend, Infraestructura Cloud & Seguridad.
-* **Metodología Ágil:** Marco **Scrum** (planificación por Sprints, bitácoras semanales de avance y mejora continua).
+* **Rol:** Encargado de Creación, Seguridad y Levantamiento en Línea.
+* **Metodología Ágil:** Marco **Scrum** (planificación por Sprints, bitácoras semanales de avance y mejora continua con cliente real).
 * **Aportes Clave:**
-  * Diseño, prototipado y desarrollo completo de la interfaz de usuario (UI/UX responsiva y accesible).
-  * Infraestructura cloud: Despliegue en producción con hosting dedicado, configuración de dominio/URL personalizada y certificados SSL.
-  * Hardening de seguridad: Implementación de autenticación de dos factores (2FA / OTP con hash salted), protección contra fuerza bruta y sanitización en cliente/servidor.
-* **Stack:** Python, Django, PostgreSQL, Firebase Auth / Firestore, Scikit-Learn, Railway.
+  * **Creación & UI/UX:** Diseño, prototipado y desarrollo de la interfaz de usuario responsiva y accesible con HTML5 semántico, CSS3 modular y HTMX.
+  * **Seguridad & Hardening:** Implementación de autenticación de dos factores (2FA / OTP transaccional con Gmail API REST), control de sesiones seguras mediante tokens y firmas HMAC.
+  * **Levantamiento en Línea:** Despliegue de infraestructura en producción con Railway, gestión de dominio corporativo propio ([smartbids.cl](https://smartbids.cl)), registros DNS y aprovisionamiento SSL/TLS.
+* **Stack:** HTMX, HTML5, CSS3, Railway, DNS/SSL, Python, Django, PostgreSQL.
 
 #### 🔹 [Notes & Sillage — E-Commerce Serverless & Catálogo de Fragancias](https://notes.cl/)
 > **Solución e-commerce y catálogo en producción bajo dominio propio ([notes.cl](https://notes.cl/)).**
