@@ -100,13 +100,13 @@ def draw_section_title(ctx, y, title):
     ctx.set_source_rgb(0.06, 0.1, 0.2)
     ctx.move_to(MARGIN_L, y)
     ctx.show_text(title)
-    y += 3.5
+    y += 3.0
     ctx.set_source_rgb(0.72, 0.77, 0.85)
     ctx.set_line_width(0.6)
     ctx.move_to(MARGIN_L, y)
     ctx.line_to(MARGIN_R, y)
     ctx.stroke()
-    y += 11.5
+    y += 10.0
     return y
 
 def draw_header(ctx, y):
@@ -191,7 +191,7 @@ def draw_project(ctx, y, p):
     date_w = ctx.text_extents(p['date']).x_advance
     ctx.move_to(MARGIN_R - date_w, y)
     ctx.show_text(p['date'])
-    y += 10.0
+    y += 9.5
     
     ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
     ctx.set_font_size(8.0)
@@ -206,12 +206,12 @@ def draw_project(ctx, y, p):
         ctx.tag_begin(cairo.TAG_LINK, f"uri='{p['link_url']}'")
         ctx.show_text(p['link_text'])
         ctx.tag_end(cairo.TAG_LINK)
-    y += 10.5
+    y += 9.5
     
     for b_prefix, b_text in p['bullets']:
-        y = draw_bullet(ctx, MARGIN_L, y, b_prefix, b_text, USABLE_W, line_h=10.8, font_size=8.1)
-        y += 1.0
-    y += 3.0
+        y = draw_bullet(ctx, MARGIN_L, y, b_prefix, b_text, USABLE_W, line_h=10.1, font_size=8.0)
+        y += 0.6
+    y += 2.5
     return y
 
 def draw_footer(ctx):
@@ -254,20 +254,40 @@ def generate_pdf(output_path):
         '(CertiProf DFPC™/DEPC®), certificación en Python (Cisco PCAP) y 1.er lugar regional en robótica competitiva.'
     )
     ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
-    ctx.set_font_size(8.2)
+    ctx.set_font_size(8.1)
     ctx.set_source_rgb(0.18, 0.22, 0.28)
     for line in wrap_text(ctx, profile_text, USABLE_W):
         ctx.move_to(MARGIN_L, y)
         ctx.show_text(line)
-        y += 11.0
-    y += 6.0
+        y += 10.5
+    y += 5.0
 
     # 2. EXPERIENCIA LABORAL Y PROYECTOS DESTACADOS
     y = draw_section_title(ctx, y, 'EXPERIENCIA LABORAL Y PROYECTOS DESTACADOS')
     projects = [
         {
+            'title': 'G&M Constructora – Plataforma Corporativa y Consultoría Web',
+            'date': 'Nov 2026',
+            'sub_prefix': 'Rol: Consultor Web Freelance & Diseñador Full-Stack | Cliente PYME | ',
+            'link_text': 'deralexsander.github.io/GMConstructora',
+            'link_url': 'https://deralexsander.github.io/GMConstructora/',
+            'bullets': [
+                ('Consultoría & Catálogo de Obras:', 'Levantamiento de requerimientos, diseño UI/UX mobile-first de catálogo de servicios/obras reales para alta conversión, gestión de dominio/DNS y despliegue a producción.')
+            ]
+        },
+        {
+            'title': 'D & G Parfums – Catálogo Luxury para Punto de Venta',
+            'date': 'Nov 2026',
+            'sub_prefix': 'Rol: Desarrollador Frontend Freelance | Cliente Real | ',
+            'link_text': 'd-and-g-parfums',
+            'link_url': 'https://deralexsander.github.io/d-and-g-parfums/',
+            'bullets': [
+                ('Diseño & Experiencia:', 'Desarrollé un catálogo responsive con búsqueda predictiva, notas aromáticas y mapa olfativo para consulta rápida en sala de ventas.')
+            ]
+        },
+        {
             'title': 'SmartBids – SaaS de Inteligencia Comercial y Licitaciones Públicas',
-            'date': 'Ago 2025 – Dic 2025',
+            'date': 'Ago – Nov 2026',
             'sub_prefix': 'Rol: Encargado de Creación, Seguridad y Levantamiento en Línea | SaaS en Producción | ',
             'link_text': 'smartbids.cl',
             'link_url': 'https://smartbids.cl',
@@ -278,19 +298,8 @@ def generate_pdf(output_path):
             ]
         },
         {
-            'title': 'Servicio CATTECH – Plataforma de Integración y Pasarela Financiera',
-            'date': 'Ago 2024 – Nov 2024',
-            'sub_prefix': 'Rol: Desarrollador Full-Stack Principal | Proyecto Integrador | ',
-            'link_text': 'github.com/deralexsander/Servicio-CATTECH',
-            'link_url': 'https://github.com/deralexsander/Servicio-CATTECH',
-            'bullets': [
-                ('Pasarela Financiera:', 'Integré el SDK de Mercado Pago para pagos seguros con tarjeta y desarrollé motor de validación transaccional para transferencias bancarias directas.'),
-                ('Persistencia NoSQL & Móvil:', 'Migré arquitectura a Cloud Firestore (GCP) reduciendo latencia de consulta en un 40% con reglas de seguridad granulares; empaquetado móvil con Capacitor y Angular/Ionic.')
-            ]
-        },
-        {
             'title': 'Notes & Sillage – E-Commerce Serverless & Catálogo de Fragancias',
-            'date': '2024 – 2025',
+            'date': 'Oct 2026 – Actual',
             'sub_prefix': 'Rol: Fundador & Desarrollador Full-Stack | notes.cl | ',
             'link_text': 'Demo notes.cl',
             'link_url': 'https://notes.cl/',
@@ -301,7 +310,7 @@ def generate_pdf(output_path):
         },
         {
             'title': 'FerreMas – E-Commerce y Plataforma de Gestión Logística',
-            'date': 'Abr 2025 – Jun 2025',
+            'date': 'Mar – Jul 2025',
             'sub_prefix': 'Rol: Desarrollador Full-Stack | Proyecto Académico Integrador | ',
             'link_text': 'github.com/deralexsander/web_FerreMas',
             'link_url': 'https://github.com/deralexsander/web_FerreMas',
@@ -311,20 +320,31 @@ def generate_pdf(output_path):
             ]
         },
         {
-            'title': 'G&M Constructora – Plataforma Corporativa y Consultoría Web',
-            'date': '2025',
-            'sub_prefix': 'Rol: Consultor Web Freelance & Diseñador Full-Stack | Cliente PYME | ',
-            'link_text': 'deralexsander.github.io/GMConstructora',
-            'link_url': 'https://deralexsander.github.io/GMConstructora/',
+            'title': 'Servicio CATTECH – Plataforma de Integración y Pasarela Financiera',
+            'date': 'Ago – Nov 2024',
+            'sub_prefix': 'Rol: Desarrollador Full-Stack Principal | Proyecto Integrador | ',
+            'link_text': 'github.com/deralexsander/Servicio-CATTECH',
+            'link_url': 'https://github.com/deralexsander/Servicio-CATTECH',
             'bullets': [
-                ('Consultoría & Catálogo de Obras:', 'Levantamiento de requerimientos, diseño UI/UX mobile-first de catálogo de servicios/obras reales para alta conversión, gestión de dominio/DNS y despliegue a producción.')
+                ('Pasarela Financiera:', 'Integré el SDK de Mercado Pago para pagos seguros con tarjeta y desarrollé motor de validación transaccional para transferencias bancarias directas.'),
+                ('Persistencia NoSQL & Móvil:', 'Migré arquitectura a Cloud Firestore (GCP) reduciendo latencia de consulta en un 40% con reglas de seguridad granulares; empaquetado móvil con Capacitor y Angular/Ionic.')
+            ]
+        },
+        {
+            'title': 'NekoBeansWeb – Sistema Administrativo y Tienda Online',
+            'date': 'Jun – Jul 2024',
+            'sub_prefix': 'Rol: Desarrollador Full-Stack | Proyecto PYME | ',
+            'link_text': 'github.com/deralexsander/web_nekobeans',
+            'link_url': 'https://github.com/deralexsander/web_nekobeans',
+            'bullets': [
+                ('E-commerce & Administración:', 'Digitalicé cotizaciones y ventas directas para una PYME de manualidades con Django, PostgreSQL y control de roles.')
             ]
         }
     ]
     for p in projects:
         y = draw_project(ctx, y, p)
 
-    y += 3.0
+    y += 1.5
 
     # 3. HABILIDADES TÉCNICAS Y STACK TECNOLÓGICO
     y = draw_section_title(ctx, y, 'HABILIDADES TÉCNICAS Y STACK TECNOLÓGICO')
@@ -337,9 +357,9 @@ def generate_pdf(output_path):
         ('Metodologías de Trabajo:', 'Scrum (iteraciones ágiles), Kanban, Code Reviews, Pair Programming, levantamiento de requerimientos.')
     ]
     for prefix, desc in skills:
-        y = draw_bullet(ctx, MARGIN_L, y, prefix, desc, USABLE_W, line_h=10.8, font_size=8.1)
-        y += 0.8
-    y += 3.5
+        y = draw_bullet(ctx, MARGIN_L, y, prefix, desc, USABLE_W, line_h=10.0, font_size=8.0)
+        y += 0.6
+    y += 2.5
 
     # 4. EDUCACIÓN Y FORMACIÓN TÉCNICA
     y = draw_section_title(ctx, y, 'EDUCACIÓN Y FORMACIÓN TÉCNICA')
@@ -357,17 +377,17 @@ def generate_pdf(output_path):
     date_w = ctx.text_extents('2023 – 2026').x_advance
     ctx.move_to(MARGIN_R - date_w, y)
     ctx.show_text('2023 – 2026')
-    y += 9.5
+    y += 8.5
 
     ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
     ctx.set_font_size(8.0)
     ctx.set_source_rgb(0.25, 0.3, 0.38)
     ctx.move_to(MARGIN_L, y)
     ctx.show_text('Carrera: Ingeniería en Informática (Egresando / Cursando último año)')
-    y += 10.0
+    y += 8.5
 
-    y = draw_bullet(ctx, MARGIN_L, y, 'Formación Especializada:', 'Enfoque práctico en ingeniería de software, arquitectura de sistemas, bases de datos relacionales y NoSQL, desarrollo full-stack, DevOps y gestión ágil.', USABLE_W, line_h=10.4, font_size=8.0)
-    y += 3.5
+    y = draw_bullet(ctx, MARGIN_L, y, 'Formación Especializada:', 'Enfoque práctico en ingeniería de software, arquitectura de sistemas, bases de datos relacionales y NoSQL, desarrollo full-stack, DevOps y gestión ágil.', USABLE_W, line_h=9.8, font_size=8.0)
+    y += 2.5
 
     # 4.2 Colegio Don Orione - Técnico en Electrónica
     ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
@@ -382,7 +402,7 @@ def generate_pdf(output_path):
     date_w = ctx.text_extents('Titulado (2022)').x_advance
     ctx.move_to(MARGIN_R - date_w, y)
     ctx.show_text('Titulado (2022)')
-    y += 9.5
+    y += 8.5
 
     ctx.select_font_face('Liberation Sans', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
     ctx.set_font_size(8.0)
@@ -398,10 +418,10 @@ def generate_pdf(output_path):
     ctx.tag_begin(cairo.TAG_LINK, "uri='https://deralexsander.github.io/deralexsander/assets/certificates/tecnico-nivel-medio-electronica.pdf'")
     ctx.show_text('[Ver Certificado Oficial PDF]')
     ctx.tag_end(cairo.TAG_LINK)
-    y += 10.0
+    y += 8.5
 
-    y = draw_bullet(ctx, MARGIN_L, y, 'Especialidad Técnica:', 'Fundamentos sólidos en circuitos análogos/digitales, microcontroladores, instrumentación, diagnóstico de fallas y soporte integral de hardware electrónico.', USABLE_W, line_h=10.4, font_size=8.0)
-    y += 4.5
+    y = draw_bullet(ctx, MARGIN_L, y, 'Especialidad Técnica:', 'Fundamentos sólidos en circuitos análogos/digitales, microcontroladores, instrumentación, diagnóstico de fallas y soporte integral de hardware electrónico.', USABLE_W, line_h=9.8, font_size=8.0)
+    y += 3.5
 
     # 5. CERTIFICACIONES INTERNACIONALES Y DISTINCIONES
     y = draw_section_title(ctx, y, 'CERTIFICACIONES INTERNACIONALES Y DISTINCIONES')
@@ -411,8 +431,8 @@ def generate_pdf(output_path):
         ('MakeX Robotics Competition:', '1.er Lugar Regional – Medalla de Oro en diseño y programación de algoritmos de navegación autónoma en tiempo real.')
     ]
     for prefix, desc in certs:
-        y = draw_bullet(ctx, MARGIN_L, y, prefix, desc, USABLE_W, line_h=10.6, font_size=8.0)
-        y += 0.8
+        y = draw_bullet(ctx, MARGIN_L, y, prefix, desc, USABLE_W, line_h=10.0, font_size=8.0)
+        y += 0.6
 
     draw_footer(ctx)
     surface.show_page()
