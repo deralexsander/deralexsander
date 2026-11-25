@@ -332,7 +332,7 @@ def generate_pdf(output_path):
         },
         {
             'title': 'NekoBeansWeb – Sistema Administrativo y Tienda Online',
-            'date': 'Jun – Jul 2024',
+            'date': 'Mar – Jul 2024',
             'sub_prefix': 'Rol: Desarrollador Full-Stack | Proyecto PYME | ',
             'link_text': 'github.com/deralexsander/web_nekobeans',
             'link_url': 'https://github.com/deralexsander/web_nekobeans',

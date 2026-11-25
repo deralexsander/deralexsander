@@ -236,7 +236,7 @@ def main():
          "Google OAuth 2.0, Firebase Auth con RBAC y Google Maps API para despachos logísticos."),
         ("Servicio CATTECH – Pasarela financiera", "Ago – Nov 2024",
          "SDK de Mercado Pago, Cloud Firestore y aplicación móvil con Angular/Ionic."),
-        ("NekoBeansWeb – Sistema administrativo", "Jun – Jul 2024",
+        ("NekoBeansWeb – Sistema administrativo", "Mar – Jul 2024",
          "Cotizaciones y ventas con Django, PostgreSQL y control de roles."),
     ]
 
